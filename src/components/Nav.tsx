@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MessageSquareText } from "lucide-react";
 import { UserRound } from "lucide-react";
-import { Github } from "lucide-react";
+import { IconBrandGithub } from "@tabler/icons-react";
 
 export default function Nav() {
   return (
@@ -62,7 +62,10 @@ export default function Nav() {
           title="Github"
           className="full-height-center"
         >
-          <Github className="color-[var(--nav-foreground)]" size={16} />
+          <IconBrandGithub
+            className="color-[var(--nav-foreground)]"
+            size={16}
+          />
         </Link>
         <Link href="/contact" title="Login" className="full-height-center">
           <UserRound className="color-[var(--nav-foreground)]" size={16} />
