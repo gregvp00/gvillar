@@ -3,18 +3,18 @@ import { MessageSquareText } from "lucide-react";
 import { UserRound } from "lucide-react";
 import { Github } from "lucide-react";
 
-export default function Home() {
+export default function Nav() {
   return (
     <nav className="flex items-center justify-between w-full h-12 px-10 bg-[var(--nav-background)] text-[var(--nav-foreground)] text-sm">
       <div className="flex items-center space-x-4 full-height-center">
         <Link href="/" className="text-lg font-bold full-height-center">
           Logo
         </Link>
-        <ul className="flex space-x-4 full-height-center">
+        <ul className="flex full-height-center">
           <li className="full-height-center">
             <Link
               href="/about"
-              className="hover:text-[var(--nav-foreground-hover)] hover:bg-[var(--nav-background-hover)] full-height-center"
+              className="hover:text-[var(--nav-foreground-hover)] hover:bg-[var(--nav-background-hover)] px-1 full-height-center"
             >
               PROYECTOS
             </Link>
@@ -22,7 +22,7 @@ export default function Home() {
           <li className="full-height-center">
             <Link
               href="/services"
-              className=" hover:text-[var(--nav-foreground-hover)] hover:bg-[var(--nav-background-hover)] full-height-center"
+              className="hover:text-[var(--nav-foreground-hover)] hover:bg-[var(--nav-background-hover)] px-1 full-height-center"
             >
               SOBRE MI
             </Link>
@@ -30,7 +30,7 @@ export default function Home() {
           <li className="full-height-center">
             <Link
               href="/contact"
-              className=" hover:text-[var(--nav-foreground-hover)] hover:bg-[var(--nav-background-hover)] full-height-center"
+              className="hover:text-[var(--nav-foreground-hover)] hover:bg-[var(--nav-background-hover)] px-1 full-height-center"
             >
               CONTACTO
             </Link>
@@ -38,7 +38,7 @@ export default function Home() {
           <li className="full-height-center">
             <Link
               href="/contact"
-              className=" hover:text-[var(--nav-foreground-hover)] hover:bg-[var(--nav-background-hover)] full-height-center"
+              className="hover:text-[var(--nav-foreground-hover)] hover:bg-[var(--nav-background-hover)] px-1 full-height-center"
             >
               CV
             </Link>

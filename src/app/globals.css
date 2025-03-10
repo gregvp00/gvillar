@@ -18,7 +18,9 @@
     --nav-background: #181818;
     --nav-background-hover: #242424;
     --foreground: #adccc2;
+    --foreground-hover: #96b3a9;
     --nav-foreground: #ffffff;
+    --nav-foreground-hover: #eeeeee;
   }
 }
 
