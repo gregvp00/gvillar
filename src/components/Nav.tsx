@@ -1,39 +1,72 @@
 import Link from "next/link";
+import { MessageSquareText } from "lucide-react";
+import { UserRound } from "lucide-react";
+import { Github } from "lucide-react";
 
 export default function Home() {
   return (
-    <nav className="flex items-center justify-between w-full h-16 px-10 bg-[var(--nav-background)] text-[var(--nav-foreground)]">
-      <div className="flex space-x-4">
-        <Link href="/" className="text-white text-2xl font-bold">
+    <nav className="flex items-center justify-between w-full h-12 px-10 bg-[var(--nav-background)] text-[var(--nav-foreground)] text-sm">
+      <div className="flex items-center space-x-4 full-height-center">
+        <Link href="/" className="text-lg font-bold full-height-center">
           Logo
         </Link>
-        <ul className="flex space-x-4">
-          <li>
-            <Link href="/about" className="text-white hover:text-gray-200">
-              Proyectos
+        <ul className="flex space-x-4 full-height-center">
+          <li className="full-height-center">
+            <Link
+              href="/about"
+              className="hover:text-[var(--nav-foreground-hover)] hover:bg-[var(--nav-background-hover)] full-height-center"
+            >
+              PROYECTOS
             </Link>
           </li>
-          <li>
-            <Link href="/services" className="text-white hover:text-gray-200">
-              Sobre mi
+          <li className="full-height-center">
+            <Link
+              href="/services"
+              className=" hover:text-[var(--nav-foreground-hover)] hover:bg-[var(--nav-background-hover)] full-height-center"
+            >
+              SOBRE MI
             </Link>
           </li>
-          <li>
-            <Link href="/contact" className="text-white hover:text-gray-200">
-              Contacto
+          <li className="full-height-center">
+            <Link
+              href="/contact"
+              className=" hover:text-[var(--nav-foreground-hover)] hover:bg-[var(--nav-background-hover)] full-height-center"
+            >
+              CONTACTO
             </Link>
           </li>
-          <li>
-            <Link href="/contact" className="text-white hover:text-gray-200">
+          <li className="full-height-center">
+            <Link
+              href="/contact"
+              className=" hover:text-[var(--nav-foreground-hover)] hover:bg-[var(--nav-background-hover)] full-height-center"
+            >
               CV
             </Link>
           </li>
         </ul>
       </div>
-      <div className="flex space-x-4">
-        <li>Español</li>
-        <li>Send message</li>
-        <li>Cuenta login</li>
+      <div className="flex items-center space-x-4 h-full">
+        <li className="full-height-center">ESPAÑOL</li>
+        <Link
+          href="/contact"
+          title="Send message"
+          className="full-height-center"
+        >
+          <MessageSquareText
+            className="color-[var(--nav-foreground)]"
+            size={16}
+          />
+        </Link>
+        <Link
+          href="https://github.com/gregvp00"
+          title="Github"
+          className="full-height-center"
+        >
+          <Github className="color-[var(--nav-foreground)]" size={16} />
+        </Link>
+        <Link href="/contact" title="Login" className="full-height-center">
+          <UserRound className="color-[var(--nav-foreground)]" size={16} />
+        </Link>
       </div>
     </nav>
   );
