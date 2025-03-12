@@ -13,6 +13,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oooh+Baby&display=swap"
+          rel="stylesheet"
+        ></link>
+      </head>
       <body>{children}</body>
     </html>
   );

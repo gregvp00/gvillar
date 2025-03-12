@@ -6,11 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "extract": "lingui extract",
-    "compile": "lingui compile"
+    "lint": "next lint"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.27.5",
     "@tabler/icons-react": "^3.31.0",
     "lucide-react": "^0.479.0",
     "next": "15.2.1",
@@ -18,8 +17,6 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@lingui/cli": "^5.2.0",
-    "@lingui/swc-plugin": "^5.4.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

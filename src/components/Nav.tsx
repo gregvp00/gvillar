@@ -2,10 +2,11 @@ import Link from "next/link";
 import { MessageSquareText } from "lucide-react";
 import { UserRound } from "lucide-react";
 import { IconBrandGithub } from "@tabler/icons-react";
+import { Languages } from "lucide-react";
 
 export default function Nav() {
   return (
-    <nav className="flex items-center justify-between w-full h-12 px-10 bg-[var(--nav-background)] text-[var(--nav-foreground)] text-sm">
+    <nav className="fixed top-0 flex items-center justify-between w-full h-12 px-10 bg-[var(--nav-background)] text-[var(--nav-foreground)] text-sm">
       <div className="flex items-center space-x-4 full-height-center">
         <Link href="/" className="text-lg font-bold full-height-center">
           Logo
@@ -46,7 +47,11 @@ export default function Nav() {
         </ul>
       </div>
       <div className="flex items-center space-x-4 h-full">
-        <li className="full-height-center">ESPAÑOL</li>
+        <li className="full-height-center">
+          {" "}
+          <Languages className="color-[var(--nav-foreground)] mr-1" size={16} />
+          ESPAÑOL
+        </li>
         <Link
           href="/contact"
           title="Send message"
@@ -67,7 +72,7 @@ export default function Nav() {
             size={16}
           />
         </Link>
-        <Link href="/contact" title="Login" className="full-height-center">
+        <Link href="/account" title="Login" className="full-height-center">
           <UserRound className="color-[var(--nav-foreground)]" size={16} />
         </Link>
       </div>

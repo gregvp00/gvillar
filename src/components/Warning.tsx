@@ -2,7 +2,7 @@ export default function Nav() {
   return (
     <div
       role="alert"
-      className=" absolute bottom-0 rounded-sm border-s-4 border-red-500 bg-red-50 p-4"
+      className="fixed bottom-0 left-0 rounded-sm border-s-4 border-red-500 bg-red-50 p-4 w-screen"
     >
       <strong className="block font-medium text-red-800">
         {" "}

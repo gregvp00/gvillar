@@ -1,14 +1,101 @@
 import Image from "next/image";
 import Nav from "../components/Nav";
 import Warning from "../components/Warning";
+import { IconBrandAstro } from "@tabler/icons-react";
+import { IconBrandTailwind } from "@tabler/icons-react";
+import { IconBrandDocker } from "@tabler/icons-react";
+import { IconBrandGithub } from "@tabler/icons-react";
+import { IconWorld } from "@tabler/icons-react";
 
 export default function Home() {
   return (
     <div>
-      <Warning />
       <Nav />
-      <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 ]">
+      <div className="grid items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 ]">
+        <div className="flex justify-self-start items-center w-full min-h-screen border-b border-solid border-black dark:border-white">
+          <section className="space-y-2">
+            <h1 className="text-7xl Obaby">Gregory Villar P.</h1>
+            <h3 className="text-lg max-w-lg">
+              Desarrollador & diseñador web creativo y entusiasta con enfoque en
+              interfaces prácticas y herramientas web.
+            </h3>
+          </section>
+        </div>
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+          <h1 className="text-5xl">Proyectos</h1>
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mx-20">
+            <article className="rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl">
+              <div className="rounded-[10px] bg-[#303030] p-4 sm:p-6">
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <Image
+                    src="/FincasBarahona.jpg"
+                    alt="Fincas Barahona"
+                    width={1500}
+                    height={1500}
+                    className="w-full h-auto object-cover rounded-t-md"
+                  />
+                </div>
+                <h5 className="mt-1 block text-xs text-[var(--nav-foreground)]">
+                  Página Web
+                </h5>
+                <a href="#">
+                  <h3 className="mt-0.5 text-xl font-medium text-[var(--nav-foreground-hover)]">
+                    Fincas Barahona
+                  </h3>
+                </a>
+                <a href="#">
+                  <h4 className="mt-0.5 text-sm ">
+                    Alquiler de alojamientos turísticos en la ciudad costera de
+                    Altea con gestor de archivos y recibos a través de Docker.
+                  </h4>
+                </a>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_2fr] md:items-center md:gap-8 mt-4">
+                  <div className="flex flex-wrap gap-1.5">
+                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-red-700 inline-flex items-center gap-1">
+                      <IconBrandAstro
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                      Astro
+                    </span>
+                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-green-700 inline-flex items-center gap-1">
+                      <IconBrandTailwind
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                      Tailwind
+                    </span>
+                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-blue-700 inline-flex items-center gap-1">
+                      <IconBrandDocker
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                      Docker
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    <span>
+                      <IconBrandGithub
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                    </span>
+                    <span>
+                      <IconWorld
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
           <Image
             className="dark:invert"
             src="/next.svg"
@@ -100,8 +187,15 @@ export default function Home() {
             />
             Go to nextjs.org →
           </a>
+
+          <div className="h-10 w-10 bg-[#525f6f]"></div>
+          <div className="h-10 w-10 bg-[#8b3037]"></div>
+          <div className="h-10 w-10 bg-[#d8cfc0]"></div>
+          <div className="h-10 w-10 bg-[#adccc2]"></div>
         </footer>
       </div>
+
+      <Warning />
     </div>
   );
 }
