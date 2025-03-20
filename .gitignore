@@ -11,6 +11,8 @@
 !.yarn/versions
 
 # testing
+/src/components/box.css
+/src/components/box.tsx
 /coverage
 
 # next.js

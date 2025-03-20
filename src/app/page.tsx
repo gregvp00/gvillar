@@ -6,6 +6,10 @@ import { IconBrandTailwind } from "@tabler/icons-react";
 import { IconBrandDocker } from "@tabler/icons-react";
 import { IconBrandGithub } from "@tabler/icons-react";
 import { IconWorld } from "@tabler/icons-react";
+import { IconBrandNextcloud } from "@tabler/icons-react";
+import { IconFileTypeHtml } from "@tabler/icons-react";
+import { IconFileTypeCss } from "@tabler/icons-react";
+import { IconFileTypeJs } from "@tabler/icons-react";
 
 export default function Home() {
   return (
@@ -36,6 +40,157 @@ export default function Home() {
                   />
                 </div>
                 <h5 className="mt-1 block text-xs text-[var(--nav-foreground)]">
+                  Webpage
+                </h5>
+                <a href="#">
+                  <h3 className="mt-0.5 text-xl font-medium text-[var(--nav-foreground-hover)]">
+                    Fincas Barahona
+                  </h3>
+                </a>
+                <a href="#">
+                  <h4 className="mt-0.5 text-sm ">
+                    Alquiler de alojamientos turísticos en la ciudad costera de
+                    Altea con gestor de archivos y recibos a través de Docker.
+                  </h4>
+                </a>
+                <div className="grid-cols-1 gap-4 md:grid-cols-[1fr_2fr] md:items-center md:gap-8 mt-4 flex justify-between">
+                  <div className="flex flex-wrap gap-1.5">
+                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-red-700 inline-flex items-center gap-1">
+                      <IconBrandAstro
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                      Astro
+                    </span>
+                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-green-700 inline-flex items-center gap-1">
+                      <IconBrandTailwind
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                      Tailwind
+                    </span>
+                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-blue-700 inline-flex items-center gap-1">
+                      <IconBrandDocker
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                      Docker
+                    </span>
+                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-blue-500 inline-flex items-center gap-1">
+                      <IconBrandNextcloud
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                      NextCloud
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    <span>
+                      <IconBrandGithub
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                    </span>
+                    <span>
+                      <IconWorld
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article className="rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl">
+              <div className="rounded-[10px] bg-[#303030] p-4 sm:p-6">
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <Image
+                    src="/DeviceOrientation.jpg"
+                    alt="Device Orientation"
+                    width={1500}
+                    height={1500}
+                    className="w-full h-auto object-cover rounded-t-md"
+                  />
+                </div>
+                <h5 className="mt-1 block text-xs text-[var(--nav-foreground)]">
+                  Página Web
+                </h5>
+                <a href="#">
+                  <h3 className="mt-0.5 text-xl font-medium text-[var(--nav-foreground-hover)]">
+                    Device Orientation
+                  </h3>
+                </a>
+                <a href="#">
+                  <h4 className="mt-0.5 text-sm ">
+                    Una ligera página web que demuestra efectos de paralaje
+                    utilizando el evento DeviceOrientation e interacciones con
+                    click y hover.
+                  </h4>
+                </a>
+                <div className="grid-cols-1 gap-4 md:grid-cols-[1fr_2fr] md:items-center md:gap-8 mt-4 flex justify-between">
+                  <div className="flex flex-wrap gap-1.5">
+                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-orange-600 inline-flex items-center gap-1">
+                      <IconFileTypeHtml
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                      HTML
+                    </span>
+                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-blue-500 inline-flex items-center gap-1">
+                      <IconFileTypeCss
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                      CSS
+                    </span>
+                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-yellow-600 inline-flex items-center gap-1">
+                      <IconFileTypeJs
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                      Javascript
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    <span>
+                      <IconBrandGithub
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                    </span>
+                    <span>
+                      <IconWorld
+                        className="color-[var(--nav-foreground)]"
+                        size={20}
+                        stroke={1.25}
+                      />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article className="rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl">
+              <div className="rounded-[10px] bg-[#303030] p-4 sm:p-6">
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <Image
+                    src="/FincasBarahona.jpg"
+                    alt="Fincas Barahona"
+                    width={1500}
+                    height={1500}
+                    className="w-full h-auto object-cover rounded-t-md"
+                  />
+                </div>
+                <h5 className="mt-1 block text-xs text-[var(--nav-foreground)]">
                   Página Web
                 </h5>
                 <a href="#">
@@ -49,7 +204,7 @@ export default function Home() {
                     Altea con gestor de archivos y recibos a través de Docker.
                   </h4>
                 </a>
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_2fr] md:items-center md:gap-8 mt-4">
+                <div className="grid-cols-1 gap-4 md:grid-cols-[1fr_2fr] md:items-center md:gap-8 mt-4 flex justify-between">
                   <div className="flex flex-wrap gap-1.5">
                     <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-red-700 inline-flex items-center gap-1">
                       <IconBrandAstro
