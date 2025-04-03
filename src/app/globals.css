@@ -19,18 +19,18 @@
     --nav-background-hover: #242424;
     --foreground: #adccc2;
     --foreground-hover: #96b3a9;
-    --nav-foreground: #d8cfc0;
-    --nav-foreground-hover: #eeeeee;
+    --nav-foreground: #eeeeee;
+    --nav-foreground-hover: #d8cfc0;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Montserrat", Roboto, sans-serif;
+  font-family: "Bricolage Grotesque", Roboto, sans-serif;
 }
 .Obaby {
-  font-family: "Oooh Baby", "Montserrat", Roboto, sans-serif;
+  font-family: "Oooh Baby";
 }
 .full-height-center {
   display: flex;

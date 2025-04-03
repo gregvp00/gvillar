@@ -1,15 +1,7 @@
 import Image from "next/image";
 import Nav from "../components/Nav";
 import Warning from "../components/Warning";
-import { IconBrandAstro } from "@tabler/icons-react";
-import { IconBrandTailwind } from "@tabler/icons-react";
-import { IconBrandDocker } from "@tabler/icons-react";
-import { IconBrandGithub } from "@tabler/icons-react";
-import { IconWorld } from "@tabler/icons-react";
-import { IconBrandNextcloud } from "@tabler/icons-react";
-import { IconFileTypeHtml } from "@tabler/icons-react";
-import { IconFileTypeCss } from "@tabler/icons-react";
-import { IconFileTypeJs } from "@tabler/icons-react";
+import { projects } from "../data/pageData.js";
 
 export default function Home() {
   return (
@@ -26,230 +18,71 @@ export default function Home() {
           </section>
         </div>
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-          <h1 className="text-5xl">Proyectos</h1>
+          <h1 className="text-5xl font-medium">Projects</h1>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mx-20">
-            <article className="rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl">
-              <div className="rounded-[10px] bg-[#303030] p-4 sm:p-6">
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <Image
-                    src="/FincasBarahona.jpg"
-                    alt="Fincas Barahona"
-                    width={1500}
-                    height={1500}
-                    className="w-full h-auto object-cover rounded-t-md"
-                  />
-                </div>
-                <h5 className="mt-1 block text-xs text-[var(--nav-foreground)]">
-                  Webpage
-                </h5>
-                <a href="#">
-                  <h3 className="mt-0.5 text-xl font-medium text-[var(--nav-foreground-hover)]">
-                    Fincas Barahona
-                  </h3>
-                </a>
-                <a href="#">
-                  <h4 className="mt-0.5 text-sm ">
-                    Alquiler de alojamientos turísticos en la ciudad costera de
-                    Altea con gestor de archivos y recibos a través de Docker.
-                  </h4>
-                </a>
-                <div className="grid-cols-1 gap-4 md:grid-cols-[1fr_2fr] md:items-center md:gap-8 mt-4 flex justify-between">
-                  <div className="flex flex-wrap gap-1.5">
-                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-red-700 inline-flex items-center gap-1">
-                      <IconBrandAstro
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
+            {projects.map((data) => (
+              <>
+                <article
+                  className="rounded-xl hover:bg-gradient-to-r hover:scale-105 bg-blur from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition-transform duration-300"
+                  key={data.id}
+                >
+                  <div className="rounded-[10px] bg-[#303030] p-4 sm:p-6 h-full w-full">
+                    <a
+                      style={{ display: "flex", flexDirection: "column" }}
+                      href={data.href}
+                    >
+                      <Image
+                        src={data.src}
+                        alt={data.alt}
+                        width={1500}
+                        height={1500}
+                        className="w-full h-auto object-cover rounded-t-md"
                       />
-                      Astro
-                    </span>
-                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-green-700 inline-flex items-center gap-1">
-                      <IconBrandTailwind
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                      Tailwind
-                    </span>
-                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-blue-700 inline-flex items-center gap-1">
-                      <IconBrandDocker
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                      Docker
-                    </span>
-                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-blue-500 inline-flex items-center gap-1">
-                      <IconBrandNextcloud
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                      NextCloud
-                    </span>
+                    </a>
+                    <h5 className="mt-1 block text-xs text-[var(--nav-foreground)]">
+                      {data.category}
+                    </h5>
+                    <a href={data.href}>
+                      <h3 className="mt-0.5 text-xl font-medium text-[var(--nav-foreground-hover)]">
+                        {data.title}
+                      </h3>
+                      <h4 className="mt-0.5 text-sm ">{data.description}</h4>
+                    </a>
+                    <div className="gap-4 md:gap-8 mt-4 flex flex-none justify-between">
+                      <div className="flex flex-wrap gap-1.5 items-end">
+                        {data.badges.map((badges) => (
+                          <>
+                            <span
+                              className={`rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap ${badges.color} inline-flex items-center gap-1`}
+                            >
+                              <badges.componentName
+                                className="color-[var(--nav-foreground)]"
+                                size={20}
+                                stroke={1.25}
+                              />
+                              {badges.name}
+                            </span>
+                          </>
+                        ))}
+                      </div>
+                      <div className="flex flex-nowrap gap-1 mt-0 mb-auto">
+                        {data.socials.map((socials) => (
+                          <>
+                            <a href={socials.href}>
+                              <socials.componentName
+                                className="color-[var(--nav-foreground)]"
+                                size={20}
+                                stroke={1.25}
+                              />
+                            </a>
+                          </>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex flex-wrap gap-1">
-                    <span>
-                      <IconBrandGithub
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                    </span>
-                    <span>
-                      <IconWorld
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </article>
-            <article className="rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl">
-              <div className="rounded-[10px] bg-[#303030] p-4 sm:p-6">
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <Image
-                    src="/DeviceOrientation.jpg"
-                    alt="Device Orientation"
-                    width={1500}
-                    height={1500}
-                    className="w-full h-auto object-cover rounded-t-md"
-                  />
-                </div>
-                <h5 className="mt-1 block text-xs text-[var(--nav-foreground)]">
-                  Página Web
-                </h5>
-                <a href="#">
-                  <h3 className="mt-0.5 text-xl font-medium text-[var(--nav-foreground-hover)]">
-                    Device Orientation
-                  </h3>
-                </a>
-                <a href="#">
-                  <h4 className="mt-0.5 text-sm ">
-                    Una ligera página web que demuestra efectos de paralaje
-                    utilizando el evento DeviceOrientation e interacciones con
-                    click y hover.
-                  </h4>
-                </a>
-                <div className="grid-cols-1 gap-4 md:grid-cols-[1fr_2fr] md:items-center md:gap-8 mt-4 flex justify-between">
-                  <div className="flex flex-wrap gap-1.5">
-                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-orange-600 inline-flex items-center gap-1">
-                      <IconFileTypeHtml
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                      HTML
-                    </span>
-                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-blue-500 inline-flex items-center gap-1">
-                      <IconFileTypeCss
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                      CSS
-                    </span>
-                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-yellow-600 inline-flex items-center gap-1">
-                      <IconFileTypeJs
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                      Javascript
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    <span>
-                      <IconBrandGithub
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                    </span>
-                    <span>
-                      <IconWorld
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </article>
-            <article className="rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl">
-              <div className="rounded-[10px] bg-[#303030] p-4 sm:p-6">
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <Image
-                    src="/FincasBarahona.jpg"
-                    alt="Fincas Barahona"
-                    width={1500}
-                    height={1500}
-                    className="w-full h-auto object-cover rounded-t-md"
-                  />
-                </div>
-                <h5 className="mt-1 block text-xs text-[var(--nav-foreground)]">
-                  Página Web
-                </h5>
-                <a href="#">
-                  <h3 className="mt-0.5 text-xl font-medium text-[var(--nav-foreground-hover)]">
-                    Fincas Barahona
-                  </h3>
-                </a>
-                <a href="#">
-                  <h4 className="mt-0.5 text-sm ">
-                    Alquiler de alojamientos turísticos en la ciudad costera de
-                    Altea con gestor de archivos y recibos a través de Docker.
-                  </h4>
-                </a>
-                <div className="grid-cols-1 gap-4 md:grid-cols-[1fr_2fr] md:items-center md:gap-8 mt-4 flex justify-between">
-                  <div className="flex flex-wrap gap-1.5">
-                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-red-700 inline-flex items-center gap-1">
-                      <IconBrandAstro
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                      Astro
-                    </span>
-                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-green-700 inline-flex items-center gap-1">
-                      <IconBrandTailwind
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                      Tailwind
-                    </span>
-                    <span className="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap text-blue-700 inline-flex items-center gap-1">
-                      <IconBrandDocker
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                      Docker
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    <span>
-                      <IconBrandGithub
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                    </span>
-                    <span>
-                      <IconWorld
-                        className="color-[var(--nav-foreground)]"
-                        size={20}
-                        stroke={1.25}
-                      />
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </article>
+                </article>
+              </>
+            ))}
           </div>
           <Image
             className="dark:invert"

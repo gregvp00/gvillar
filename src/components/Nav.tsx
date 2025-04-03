@@ -10,14 +10,14 @@ export default function Nav() {
     <li key={nav.id} className="full-height-center">
       <Link
         href={nav.href}
-        className="hover:text-[var(--nav-foreground-hover)] hover:bg-[var(--nav-background-hover)] px-1 full-height-center"
+        className="hover:text-[var(--nav-foreground-hover)] px-1 full-height-center"
       >
         {nav.title}
       </Link>
     </li>
   ));
   return (
-    <nav className="fixed top-0 flex items-center justify-between w-full h-12 px-10 bg-[var(--nav-background)] text-[var(--nav-foreground)] text-sm">
+    <nav className="z-50 fixed top-0 flex items-center justify-between w-full h-12 px-10 bg-[var(--nav-background)] text-[var(--nav-foreground)] text-sm">
       <div className="flex items-center space-x-4 full-height-center">
         <Link href="/" className="text-lg font-bold full-height-center">
           Logo
