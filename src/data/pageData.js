@@ -7,8 +7,7 @@ import { IconBrandNextcloud } from "@tabler/icons-react";
 import { IconFileTypeHtml } from "@tabler/icons-react";
 import { IconFileTypeCss } from "@tabler/icons-react";
 import { IconFileTypeJs } from "@tabler/icons-react";
-import { IconBrandPython } from "@tabler/icons-react";
-import { IconBrandCpp } from "@tabler/icons-react";
+import { IconApi } from "@tabler/icons-react";
 
 export const projects = [
   {
@@ -22,21 +21,25 @@ export const projects = [
       "Rental of tourist accommodations in the seaside city of Altea with file and receipt management using Nextcloud.",
     badges: [
       {
+        id: 0,
         componentName: IconBrandAstro,
         color: "text-red-700",
         name: "Astro",
       },
       {
+        id: 1,
         componentName: IconBrandTailwind,
         color: "text-green-700",
         name: "Tailwind",
       },
       {
+        id: 2,
         componentName: IconBrandDocker,
         color: "text-blue-700",
         name: "Docker",
       },
       {
+        id: 3,
         componentName: IconBrandNextcloud,
         color: "text-blue-500",
         name: "Nextcloud",
@@ -44,10 +47,12 @@ export const projects = [
     ],
     socials: [
       {
+        id: 0,
         componentName: IconBrandGithub,
         href: "https://github.com/gregvp00/fincasBarahona24",
       },
       {
+        id: 1,
         componentName: IconWorld,
         href: "https://fincasbarahona.com/",
       },
@@ -64,16 +69,19 @@ export const projects = [
       "A webpage without framework demonstrating parallax effects using Device Orientation and mouse hover interactions.",
     badges: [
       {
+        id: 0,
         componentName: IconFileTypeHtml,
         color: "text-orange-600",
         name: "HTML",
       },
       {
+        id: 1,
         componentName: IconFileTypeCss,
         color: "text-blue-500",
         name: "CSS",
       },
       {
+        id: 2,
         componentName: IconFileTypeJs,
         color: "text-yellow-600",
         name: "Javascript",
@@ -81,10 +89,12 @@ export const projects = [
     ],
     socials: [
       {
+        id: 0,
         componentName: IconBrandGithub,
         href: "https://github.com/gregvp00/DeviceOrientation-MouseHoverParallax",
       },
       {
+        id: 1,
         componentName: IconWorld,
         href: "https://poetic-rabanadas-aafbac.netlify.app/",
       },
@@ -92,35 +102,34 @@ export const projects = [
   },
   {
     id: 2,
-    src: "/DeviceOrientation.jpg",
-    alt: "App",
-    href: "https://poetic-rabanadas-aafbac.netlify.app/",
-    category: "App",
-    title: "Workspaces App",
+    src: "/UnknownIcon.png",
+    alt: "EcommerceAstro",
+    href: "#",
+    category: "Webpage",
+    title: "Ecommerce on Astro",
     description:
-      "Is a work in progress app that allows you to create and manage workspaces.",
+      "Is a work in progress ecommerce webpage using Astro and Shopify API.",
     badges: [
       {
-        componentName: IconFileTypeJs,
-        color: "text-yellow-600",
-        name: "Javascript",
+        id: 0,
+        componentName: IconBrandAstro,
+        color: "text-red-700",
+        name: "Astro",
       },
       {
-        componentName: IconBrandCpp,
+        id: 1,
+        componentName: IconBrandTailwind,
+        color: "text-green-700",
+        name: "Tailwind",
+      },
+      {
+        id: 2,
+        componentName: IconApi,
         color: "text-orange-600",
-        name: "CPP",
+        name: "Shopify",
       },
       {
-        componentName: IconBrandPython,
-        color: "text-blue-500",
-        name: "Python",
-      },
-      {
-        componentName: IconFileTypeHtml,
-        color: "text-orange-600",
-        name: "HTML",
-      },
-      {
+        id: 3,
         componentName: IconFileTypeCss,
         color: "text-blue-500",
         name: "CSS",
@@ -128,10 +137,12 @@ export const projects = [
     ],
     socials: [
       {
+        id: 0,
         componentName: IconFileTypeJs,
         href: "#",
       },
       {
+        id: 1,
         componentName: IconFileTypeJs,
         href: "#",
       },
