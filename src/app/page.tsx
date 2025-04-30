@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Nav from "../components/Nav";
-import Warning from "../components/Warning";
 import { projects } from "../data/pageData.js";
 import { IconCode } from "@tabler/icons-react";
 import { IconUserCheck } from "@tabler/icons-react";
@@ -16,7 +15,7 @@ export default function Home() {
     <div>
       <Nav />
       <div className="grid items-center justify-items-center min-h-screen px-8 pb-20 gap-16 sm:px-20 ]">
-        <div className="flex justify-self-start items-center w-full min-h-screen border-b border-solid border-black dark:border-white">
+        <div className="flex justify-self-start items-center w-full min-h-screen border-b border-solid border-gray-800 dark:border-gray-400">
           <section className="grid grid-cols-1 lg:grid-cols-2 grid-rows-1 gap-6 space-y-2">
             <div>
               <h1 className="text-7xl Obaby">Gregory Villar P.</h1>
@@ -172,8 +171,6 @@ export default function Home() {
           <div className="h-10 w-10 bg-[#adccc2]"></div>
         </footer>
       </div>
-
-      <Warning />
     </div>
   );
 }
