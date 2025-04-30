@@ -13,12 +13,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: conic-gradient(
-        from 90deg at 1px 1px,
-        #1f1f1f 90deg,
-        #292929 0
-      )
-      0 0/7px 7px;
+    --background: linear-gradient(
+        to right,
+        transparent,
+        #202022 10%,
+        #202022 90%,
+        transparent
+      ),
+      conic-gradient(from 90deg at 1px 1px, #1f1f1f 90deg, #292929 0) 0 0/7px
+        7px;
     --background-hover: #303030;
     --nav-background: #181818;
     --nav-background-hover: #242424;

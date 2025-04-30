@@ -12,6 +12,7 @@ import { IconBrandDocker } from "@tabler/icons-react";
 import { IconBrandNextcloud } from "@tabler/icons-react";
 import { IconBrandAdobePhotoshop } from "@tabler/icons-react";
 import { IconBrandDebian } from "@tabler/icons-react";
+import { IconBrandGit } from "@tabler/icons-react";
 
 export default function Carousel() {
   const settings = {
@@ -67,6 +68,9 @@ export default function Carousel() {
             className="color-[var(--nav-foreground)]"
             size={30}
           />
+        </div>
+        <div>
+          <IconBrandGit className="color-[var(--nav-foreground)]" size={30} />
         </div>
       </Slider>
     </div>

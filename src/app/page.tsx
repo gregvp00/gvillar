@@ -5,20 +5,30 @@ import { projects } from "../data/pageData.js";
 import { IconCode } from "@tabler/icons-react";
 import { IconUserCheck } from "@tabler/icons-react";
 import Carousel from "@/components/Carousel";
+import GitHubCalendar from "react-github-calendar";
 
 export default function Home() {
+  const explicitTheme: ThemeInput = {
+    light: ["#ffffff", "#a8f0be", "#51e17c", "#1eae49", "#116329"],
+    dark: ["#000000", "#103d15", "#1f7a2a", "#2fb63f", "#56d364"],
+  };
   return (
     <div>
       <Nav />
-      <div className="grid items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 ]">
+      <div className="grid items-center justify-items-center min-h-screen px-8 pb-20 gap-16 sm:px-20 ]">
         <div className="flex justify-self-start items-center w-full min-h-screen border-b border-solid border-black dark:border-white">
-          <section className="space-y-2">
-            <h1 className="text-7xl Obaby">Gregory Villar P.</h1>
-            <h3 className="text-lg max-w-lg">
-              Creative and enthusiastic web developer & designer with a focus on
-              practical interfaces and web tools.
-            </h3>
-            <Carousel />
+          <section className="grid grid-cols-1 lg:grid-cols-2 grid-rows-1 gap-6 space-y-2">
+            <div>
+              <h1 className="text-7xl Obaby">Gregory Villar P.</h1>
+              <h3 className="text-lg max-w-lg">
+                Creative and enthusiastic web developer & designer with a focus
+                on practical interfaces and web tools.
+              </h3>
+              <Carousel />
+            </div>
+            <div className="border-1 border-black dark:border-gray-400 rounded-t-md p-3 bg-[var(--nav-background)]">
+              <GitHubCalendar username="gregvp00" theme={explicitTheme} />
+            </div>
           </section>
         </div>
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -99,6 +109,14 @@ export default function Home() {
               stroke={1.5}
             />
             About me
+          </h1>
+          <h1 className="text-5xl font-medium inline-flex">
+            <IconUserCheck
+              className="color-[var(--foreground)] mr-4"
+              size={50}
+              stroke={1.5}
+            />
+            Let's get in touch
           </h1>
         </main>
         <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
