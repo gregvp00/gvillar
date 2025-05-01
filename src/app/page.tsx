@@ -15,18 +15,17 @@ export default function Home() {
     <div>
       <Nav />
       <div className="grid items-center justify-items-center min-h-screen px-8 pb-20 gap-16 sm:px-20 ]">
-        <div className="flex justify-self-start items-center w-full min-h-screen border-b border-solid border-gray-800 dark:border-gray-400">
-          <section className="grid grid-cols-1 lg:grid-cols-2 grid-rows-1 gap-6 space-y-2">
-            <div>
+        <div className="flex items-center w-full min-h-screen border-b border-solid border-gray-800 dark:border-gray-400">
+          <section className="grid grid-cols-1 lg:grid-cols-2 grid-rows-1 justify-stretch items-center w-full">
+            <div className="space-y-4">
               <h1 className="text-7xl Obaby">Gregory Villar P.</h1>
               <h3 className="text-lg max-w-lg">
                 Creative and enthusiastic web developer & designer with a focus
                 on practical interfaces and web tools.
               </h3>
-              <Carousel />
             </div>
-            <div className="border-1 border-black dark:border-gray-400 rounded-t-md p-3 bg-[var(--nav-background)]">
-              <GitHubCalendar username="gregvp00" theme={explicitTheme} />
+            <div className="flex justify-center">
+              <Carousel />
             </div>
           </section>
         </div>
@@ -42,7 +41,7 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mx-20">
             {projects.map((data) => (
               <article
-                className="rounded-xl hover:bg-gradient-to-r hover:scale-105 bg-blur from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition-transform duration-300"
+                className="rounded-xl hover:bg-gradient-to-r hover:scale-105 lg:opacity-75 lg:hover:opacity-100 bg-blur from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition-transform duration-300"
                 key={data.id}
               >
                 <div className="rounded-[10px] bg-[#303030] p-4 sm:p-6 h-full w-full">
@@ -109,6 +108,10 @@ export default function Home() {
             />
             About me
           </h1>
+
+          <div className="border-1 border-black dark:border-gray-400 rounded-t-md p-3 bg-[var(--nav-background)]">
+            <GitHubCalendar username="gregvp00" theme={explicitTheme} />
+          </div>
           <h1 className="text-5xl font-medium inline-flex">
             <IconUserCheck
               className="color-[var(--foreground)] mr-4"

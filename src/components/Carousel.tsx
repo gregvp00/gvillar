@@ -40,7 +40,7 @@ export default function Carousel() {
     className: "center",
     centerMode: true,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     speed: 1000,
@@ -48,18 +48,17 @@ export default function Carousel() {
     arrows: false,
   };
   return (
-    <div className="slider-container w-lg [mask-image:linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]">
+    <div className="items-center justify-center text-center slider-container w-lg [mask-image:linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]">
       <Slider
         asNavFor={nav2}
         ref={(slider) => (sliderRef1 = slider)}
         {...settingsNav1}
-        className="text-center"
       >
         <div>
           <h3>Astro</h3>
         </div>
         <div>
-          <h3>Tailwind</h3>
+          <h3>TailwindCSS</h3>
         </div>
         <div>
           <h3>Next.js</h3>
@@ -90,56 +89,27 @@ export default function Carousel() {
         asNavFor={nav1}
         ref={(slider) => (sliderRef2 = slider)}
         {...settingsNav2}
-        className="items-center justify-center text-center mt-4"
+        className="mt-4"
       >
-        <div>
-          <IconBrandAstro className="color-[var(--nav-foreground)]" size={30} />
-        </div>
-        <div className="flex justify-center">
-          <IconBrandTailwind
-            className="color-[var(--nav-foreground)]"
-            size={30}
-          />
-        </div>
-        <div>
-          <IconBrandNextjs
-            className="color-[var(--nav-foreground)]"
-            size={30}
-          />
-        </div>
-        <div>
-          <IconBrandDocker
-            className="color-[var(--nav-foreground)]"
-            size={30}
-          />
-        </div>
-        <div>
-          <IconBrandNextcloud
-            className="color-[var(--nav-foreground)]"
-            size={30}
-          />
-        </div>
-        <div>
-          <IconBrandAdobePhotoshop
-            className="color-[var(--nav-foreground)]"
-            size={30}
-          />
-        </div>
-        <div>
-          <IconBrandDebian
-            className="color-[var(--nav-foreground)]"
-            size={30}
-          />
-        </div>
-        <div>
-          <IconBrandGit className="color-[var(--nav-foreground)]" size={30} />
-        </div>
-        <div>
-          <IconBrandFigma className="color-[var(--nav-foreground)]" size={30} />
-        </div>
-        <div>
-          <IconBrandMysql className="color-[var(--nav-foreground)]" size={30} />
-        </div>
+        <IconBrandAstro className="color-[var(--nav-foreground)]" size={30} />
+        <IconBrandTailwind
+          className="color-[var(--nav-foreground)]"
+          size={30}
+        />
+        <IconBrandNextjs className="color-[var(--nav-foreground)]" size={30} />
+        <IconBrandDocker className="color-[var(--nav-foreground)]" size={30} />
+        <IconBrandNextcloud
+          className="color-[var(--nav-foreground)]"
+          size={30}
+        />
+        <IconBrandAdobePhotoshop
+          className="color-[var(--nav-foreground)]"
+          size={30}
+        />
+        <IconBrandDebian className="color-[var(--nav-foreground)]" size={30} />
+        <IconBrandGit className="color-[var(--nav-foreground)]" size={30} />
+        <IconBrandFigma className="color-[var(--nav-foreground)]" size={30} />
+        <IconBrandMysql className="color-[var(--nav-foreground)]" size={30} />
       </Slider>
     </div>
   );
