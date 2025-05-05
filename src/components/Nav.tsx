@@ -1,3 +1,6 @@
+"use client";
+
+import { motion, useScroll } from "motion/react";
 import Link from "next/link";
 import { navLeft } from "../data/navData.js";
 import { MessageSquareText } from "lucide-react";
@@ -6,6 +9,8 @@ import { IconBrandGithub } from "@tabler/icons-react";
 import { Languages } from "lucide-react";
 
 export default function Nav() {
+  const { scrollYProgress } = useScroll();
+
   const listItems = navLeft.map((nav) => (
     <li key={nav.id} className="full-height-center">
       <Link
@@ -17,12 +22,12 @@ export default function Nav() {
     </li>
   ));
   return (
-    <nav className="z-50 fixed top-0 flex items-center justify-between w-full h-12 px-10 bg-[var(--nav-background)] text-[var(--nav-foreground)] text-sm">
+    <nav className="z-50 fixed top-0 flex items-center justify-between w-full h-12 px-10 nav-background backdrop-blur-md shadow-sm text-[var(--nav-foreground)] text-sm">
       <div className="flex items-center space-x-4 full-height-center">
         <Link href="/" className="text-lg font-bold full-height-center">
           Logo
         </Link>
-        <ul className="flex full-height-center">{listItems}</ul>
+        <ul className="flex text-md full-height-center">{listItems}</ul>
       </div>
       <div className="flex items-center space-x-4 h-full">
         <li className="full-height-center">
@@ -54,6 +59,19 @@ export default function Nav() {
           <UserRound className="color-[var(--nav-foreground)]" size={16} />
         </Link>
       </div>
+      <motion.div
+        id="scroll-indicator"
+        style={{
+          scaleX: scrollYProgress,
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 1,
+          originX: 0,
+          backgroundColor: "#ffffff",
+        }}
+      />
     </nav>
   );
 }

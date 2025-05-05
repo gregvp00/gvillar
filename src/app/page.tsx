@@ -4,6 +4,7 @@ import { projects } from "../data/pageData.js";
 import { IconCode } from "@tabler/icons-react";
 import { IconUserCheck } from "@tabler/icons-react";
 import Carousel from "@/components/Carousel";
+import SplitPage from "@/components/SplitPage";
 import GitHubCalendar from "react-github-calendar";
 
 export default function Home() {
@@ -14,18 +15,21 @@ export default function Home() {
   return (
     <div>
       <Nav />
-      <div className="grid items-center justify-items-center min-h-screen px-8 pb-20 gap-16 sm:px-20 ]">
+      <div className="grid items-center justify-items-center min-h-screen px-8 py-12 gap-16 sm:px-20 ]">
         <div className="flex items-center w-full min-h-screen border-b border-solid border-gray-800 dark:border-gray-400">
           <section className="grid grid-cols-1 lg:grid-cols-2 grid-rows-1 justify-stretch items-center w-full">
             <div className="space-y-4">
-              <h1 className="text-7xl Obaby">Gregory Villar P.</h1>
+              <h1 className="text-7xl font-[Oooh_Baby] text-[#adccc2]">
+                Gregory Villar P.
+              </h1>
               <h3 className="text-lg max-w-lg">
                 Creative and enthusiastic web developer & designer with a focus
                 on practical interfaces and web tools.
               </h3>
             </div>
             <div className="flex justify-center">
-              <Carousel />
+              <SplitPage />
+              <div className="absolute top-1/4 w-[601px] h-[601px] bg-[repeating-linear-gradient(0deg,#99a1af_0,#99a1af_1px,transparent_1px,transparent_75px),repeating-linear-gradient(90deg,#99a1af_0,#99a1af_1px,transparent_1px,transparent_75px)]"></div>
             </div>
           </section>
         </div>
@@ -108,7 +112,7 @@ export default function Home() {
             />
             About me
           </h1>
-
+          <Carousel />
           <div className="border-1 border-black dark:border-gray-400 rounded-t-md p-3 bg-[var(--nav-background)]">
             <GitHubCalendar username="gregvp00" theme={explicitTheme} />
           </div>
