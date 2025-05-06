@@ -91,25 +91,16 @@ export default function Carousel() {
         {...settingsNav2}
         className="mt-4"
       >
-        <IconBrandAstro className="color-[var(--nav-foreground)]" size={30} />
-        <IconBrandTailwind
-          className="color-[var(--nav-foreground)]"
-          size={30}
-        />
-        <IconBrandNextjs className="color-[var(--nav-foreground)]" size={30} />
-        <IconBrandDocker className="color-[var(--nav-foreground)]" size={30} />
-        <IconBrandNextcloud
-          className="color-[var(--nav-foreground)]"
-          size={30}
-        />
-        <IconBrandAdobePhotoshop
-          className="color-[var(--nav-foreground)]"
-          size={30}
-        />
-        <IconBrandDebian className="color-[var(--nav-foreground)]" size={30} />
-        <IconBrandGit className="color-[var(--nav-foreground)]" size={30} />
-        <IconBrandFigma className="color-[var(--nav-foreground)]" size={30} />
-        <IconBrandMysql className="color-[var(--nav-foreground)]" size={30} />
+        <IconBrandAstro className="" size={30} />
+        <IconBrandTailwind className="" size={30} />
+        <IconBrandNextjs className="" size={30} />
+        <IconBrandDocker className="" size={30} />
+        <IconBrandNextcloud className="" size={30} />
+        <IconBrandAdobePhotoshop className="" size={30} />
+        <IconBrandDebian className="" size={30} />
+        <IconBrandGit className="" size={30} />
+        <IconBrandFigma className="" size={30} />
+        <IconBrandMysql className="" size={30} />
       </Slider>
     </div>
   );

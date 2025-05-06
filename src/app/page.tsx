@@ -35,11 +35,7 @@ export default function Home() {
         </div>
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
           <h1 className="text-5xl font-medium inline-flex">
-            <IconCode
-              className="color-[var(--foreground)] mr-4"
-              size={50}
-              stroke={1.5}
-            />
+            <IconCode className="mr-4" size={50} stroke={1.5} />
             Projects
           </h1>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mx-20">
@@ -61,13 +57,9 @@ export default function Home() {
                       className="w-full h-auto object-cover rounded-t-md"
                     />
                   </a>
-                  <h5 className="mt-1 block text-xs text-[var(--nav-foreground)]">
-                    {data.category}
-                  </h5>
+                  <h5 className="mt-1 block text-xs">{data.category}</h5>
                   <a href={data.href}>
-                    <h3 className="mt-0.5 text-xl font-medium text-[var(--nav-foreground-hover)]">
-                      {data.title}
-                    </h3>
+                    <h3 className="mt-0.5 text-xl font-medium">{data.title}</h3>
                     <h4 className="mt-0.5 text-sm ">{data.description}</h4>
                   </a>
                   <div className="gap-4 md:gap-8 mt-4 flex flex-none justify-between">
@@ -78,7 +70,7 @@ export default function Home() {
                           className={`rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap ${badges.color} inline-flex items-center gap-1`}
                         >
                           <badges.componentName
-                            className="color-[var(--nav-foreground)]"
+                            className=""
                             size={20}
                             stroke={1.25}
                           />
@@ -91,7 +83,7 @@ export default function Home() {
                         <>
                           <a href={socials.href} key={socials.id}>
                             <socials.componentName
-                              className="color-[var(--nav-foreground)]"
+                              className=""
                               size={20}
                               stroke={1.25}
                             />
@@ -105,23 +97,15 @@ export default function Home() {
             ))}
           </div>
           <h1 className="text-5xl font-medium inline-flex">
-            <IconUserCheck
-              className="color-[var(--foreground)] mr-4"
-              size={50}
-              stroke={1.5}
-            />
+            <IconUserCheck className=" mr-4" size={50} stroke={1.5} />
             About me
           </h1>
           <Carousel />
-          <div className="border-1 border-black dark:border-gray-400 rounded-t-md p-3 bg-[var(--nav-background)]">
+          <div className="border-1 border-black dark:border-gray-400 rounded-t-md p-3">
             <GitHubCalendar username="gregvp00" theme={explicitTheme} />
           </div>
           <h1 className="text-5xl font-medium inline-flex">
-            <IconUserCheck
-              className="color-[var(--foreground)] mr-4"
-              size={50}
-              stroke={1.5}
-            />
+            <IconUserCheck className=" mr-4" size={50} stroke={1.5} />
             Let's get in touch
           </h1>
         </main>
