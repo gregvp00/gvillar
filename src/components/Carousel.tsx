@@ -17,14 +17,14 @@ import { IconBrandFigma } from "@tabler/icons-react";
 import { IconBrandMysql } from "@tabler/icons-react";
 
 export default function Carousel() {
-  const [nav1, setNav1] = useState(null);
-  const [nav2, setNav2] = useState(null);
-  let sliderRef1 = useRef(null);
-  let sliderRef2 = useRef(null);
+  const [nav1, setNav1] = useState<Slider | null>(null);
+  const [nav2, setNav2] = useState<Slider | null>(null);
+  const sliderRef1 = useRef<Slider | null>(null);
+  const sliderRef2 = useRef<Slider | null>(null);
 
   useEffect(() => {
-    setNav1(sliderRef1);
-    setNav2(sliderRef2);
+    setNav1(sliderRef1.current);
+    setNav2(sliderRef2.current);
   }, []);
 
   const settingsNav1 = {
@@ -49,11 +49,7 @@ export default function Carousel() {
   };
   return (
     <div className="items-center justify-center text-center slider-container w-lg [mask-image:linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]">
-      <Slider
-        asNavFor={nav2}
-        ref={(slider) => (sliderRef1 = slider)}
-        {...settingsNav1}
-      >
+      <Slider asNavFor={nav2 as Slider} ref={sliderRef1} {...settingsNav1}>
         <div>
           <h3>Astro</h3>
         </div>
@@ -86,8 +82,8 @@ export default function Carousel() {
         </div>
       </Slider>
       <Slider
-        asNavFor={nav1}
-        ref={(slider) => (sliderRef2 = slider)}
+        asNavFor={nav1 as Slider}
+        ref={sliderRef2}
         {...settingsNav2}
         className="mt-4"
       >
