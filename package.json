@@ -26,6 +26,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-slick": "^0.23.13",
     "shiki": "^3.7.0",
     "tailwindcss": "^4",
     "typescript": "^5"
