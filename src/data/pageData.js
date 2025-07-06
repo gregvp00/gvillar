@@ -102,11 +102,11 @@ export const projects = [
   },
   {
     id: 2,
-    src: "/UnknownIcon.png",
-    alt: "PaulaPortfolio",
-    href: "#",
+    src: "/PauChinchilla.jpg",
+    alt: "PauPortfolio",
+    href: "https://pauchinchilla.com/",
     category: "Webpage",
-    title: "Paula Portfolio",
+    title: "Pau Portfolio",
     description:
       "A personal portfolio webpage, showcasing her work and skills.",
     badges: [
@@ -121,7 +121,7 @@ export const projects = [
         componentName: IconBrandTailwind,
         color: "text-green-700",
         name: "Tailwind",
-      }
+      },
     ],
     socials: [
       {
@@ -163,7 +163,7 @@ export const projects = [
         componentName: IconApi,
         color: "text-orange-600",
         name: "Shopify",
-      }
+      },
     ],
     socials: [
       {

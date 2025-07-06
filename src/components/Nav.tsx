@@ -14,7 +14,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className="z-40 grid grid-cols-9 grid-rows-1 place-items-center fixed top-0 items-center w-full h-12 px-80 nav-background backdrop-blur-md shadow-sm text-sm">
+      <nav className="z-40 grid grid-cols-9 grid-rows-1 place-items-center fixed top-0 items-center w-full h-12 px-80 nav-background backdrop-blur-md shadow-sm text-sm border-b-1 border-white/20">
         <ul className="z-50 flex items-center space-x-4 col-span-4 h-full">
           {navLeft.map((nav) => (
             <li key={nav.id} className="h-full">
@@ -28,7 +28,7 @@ export default function Nav() {
           ))}
         </ul>
         <Link href="#" className="z-50 items-center col-span-1">
-          <Image src="/logo.svg" alt="Logo" width={45} height={45}  />
+          <Image src="/logo.svg" alt="Logo" width={45} height={45} />
         </Link>
         <div className="z-50 inline-flex items-center space-x-4 h-full col-span-4">
           <div className="list-none inline-flex h-full items-center hover:text-white">
@@ -37,8 +37,8 @@ export default function Nav() {
             ENGLISH
           </div>
           <Link
-            href="/contact"
-            title="Send message"
+            href="#"
+            title="Send message/feedback"
             className="h-full flex items-center hover:text-white"
           >
             <MessageSquareText className="" size={16} />
