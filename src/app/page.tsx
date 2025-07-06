@@ -1,41 +1,72 @@
 import Image from "next/image";
-import Nav from "../components/Nav";
-import { projects } from "../data/pageData.js";
+import Nav from "@/components/Nav";
+import AppPreview from "@/components/AppPreview";
+import CodeEditor from "@/components/CodeEditor"; // <-- 1. Importa el componente de editor de código
+import AppTabs from "@/components/AppTabs"; // <-- 1. Importa el componente de pestañas
+import { projects } from "@/data/pageData.js";
 import { IconCode } from "@tabler/icons-react";
 import { IconUserCheck } from "@tabler/icons-react";
 import Carousel from "@/components/Carousel";
-import SplitPage from "@/components/SplitPage";
 import GitHubCalendar from "react-github-calendar";
 
 export default function Home() {
-  const explicitTheme: ThemeInput = {
+  const explicitTheme = {
     light: ["#ffffff", "#a8f0be", "#51e17c", "#1eae49", "#116329"],
     dark: ["#000000", "#103d15", "#1f7a2a", "#2fb63f", "#56d364"],
   };
+
+  // --- 2. Define el contenido para las pestañas ---
+  const CodeTabPage = () => (
+    <div className="text-sm">
+      <CodeEditor />
+    </div>
+  );
+
+  const myTabs = [
+    {
+      id: 'app',
+      label: 'App Preview',
+      content: <AppPreview />
+    },
+    {
+      id: 'code',
+      label: 'Code',
+      content: <CodeTabPage />
+    }
+  ];
+  // --- Fin de la definición ---
+
   return (
     <div>
       <Nav />
-      <div className="grid items-center justify-items-center min-h-screen px-8 py-12 gap-16 sm:px-20 ]">
+      <div className="grid items-center justify-items-center min-h-screen px-8 py-12 gap-16 sm:px-20">
         <div className="flex items-center w-full min-h-screen border-b border-solid border-gray-800 dark:border-gray-400">
           <section className="grid grid-cols-1 lg:grid-cols-2 grid-rows-1 justify-stretch items-center w-full">
             <div className="space-y-4">
               <h1 className="text-7xl font-[Oooh_Baby] text-[#adccc2]">
-                Gregory Villar P.
+              Gregory Villar P.
               </h1>
-              <h3 className="text-lg max-w-lg">
-                Creative and enthusiastic web developer & designer with a focus
-                on practical interfaces and web tools.
+              <h3
+                className="text-lg max-w-lg bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: "radial-gradient(59.95% 118.21% at 50% 19.91%, #adccc2 0px, #adccc2 0%, #b3b3b3 50%)"
+                }}
+              >
+              Creative and enthusiastic web developer & designer with a focus
+              on practical interfaces and web tools.
               </h3>
             </div>
             <div className="flex justify-center">
-              <SplitPage />
-              <div className="absolute top-1/4 w-[601px] h-[601px] bg-[repeating-linear-gradient(0deg,#99a1af_0,#99a1af_1px,transparent_1px,transparent_75px),repeating-linear-gradient(90deg,#99a1af_0,#99a1af_1px,transparent_1px,transparent_75px)]"></div>
+              <div className="max-w-md shadow-2xl bg-gray-800 border border-[#525f6f] rounded-t-lg  w-2/5 relative">
+                <AppTabs tabs={myTabs} initialTabId="app" />
+              </div>
             </div>
           </section>
         </div>
+
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-          <h1 className="text-5xl font-medium inline-flex">
-            <IconCode className="mr-4" size={50} stroke={1.5} />
+          <h1 className="text-5xl font-medium inline-flex bg-clip-text bg-[linear-gradient(91deg,#474747_0%,#d0d0d0_55%,#474747_100%)] text-transparent">
+            <IconCode className="mr-4 text-[#d0d0d0]" size={50} stroke={1.5} />
             Projects
           </h1>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mx-20">
@@ -44,7 +75,9 @@ export default function Home() {
                 className="rounded-xl hover:bg-gradient-to-r hover:scale-105 lg:opacity-75 lg:hover:opacity-100 bg-blur from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition-transform duration-300"
                 key={data.id}
               >
-                <div className="rounded-[10px] bg-[#303030] p-4 sm:p-6 h-full w-full">
+                <div className="rounded-[10px] bg-[#303030] p-4 sm:p-6 h-full w-full justify-between flex flex-col">
+                  
+                  <div>
                   <a
                     style={{ display: "flex", flexDirection: "column" }}
                     href={data.href}
@@ -58,10 +91,13 @@ export default function Home() {
                     />
                   </a>
                   <h5 className="mt-1 block text-xs">{data.category}</h5>
+                  </div>
+                  <div>
                   <a href={data.href}>
                     <h3 className="mt-0.5 text-xl font-medium">{data.title}</h3>
                     <h4 className="mt-0.5 text-sm ">{data.description}</h4>
                   </a>
+                  </div>
                   <div className="gap-4 md:gap-8 mt-4 flex flex-none justify-between">
                     <div className="flex flex-wrap gap-1.5 items-end">
                       {data.badges.map((badges) => (
@@ -80,7 +116,6 @@ export default function Home() {
                     </div>
                     <div className="flex flex-nowrap gap-1 mt-0 mb-auto">
                       {data.socials.map((socials) => (
-                        <>
                           <a href={socials.href} key={socials.id}>
                             <socials.componentName
                               className=""
@@ -88,7 +123,6 @@ export default function Home() {
                               stroke={1.25}
                             />
                           </a>
-                        </>
                       ))}
                     </div>
                   </div>
@@ -96,20 +130,33 @@ export default function Home() {
               </article>
             ))}
           </div>
-          <h1 className="text-5xl font-medium inline-flex">
-            <IconUserCheck className=" mr-4" size={50} stroke={1.5} />
+          <h1 className="text-5xl font-medium inline-flex bg-clip-text bg-[linear-gradient(91deg,#474747_0%,#d0d0d0_60%,#474747_100%)] text-transparent">
+            <IconUserCheck className=" mr-4 text-[#d0d0d0]" size={50} stroke={1.5} />
             About me
           </h1>
+          <div className="flex flex-col gap-2 text-md max-w-2xl">
+            <p>My name is Gregory, and I'm a 24-year-old working student.</p>
+  <p>
+    My passion for technology began at a young age, It has been fueled by a continuous desire to learn through creation, making servers, building computers and developing practical ideas. Each project serves as an opportunity to learn and refine my skills.
+  </p>
+  <p>
+    Currently, my goal is to enter into the IT industry and deepen my expertise in a specialized area to become a more proficient and impactful developer.
+  </p>
+</div>
           <Carousel />
+          
+          <h1 className="text-5xl font-medium inline-flex bg-clip-text bg-[linear-gradient(91deg,#474747_0%,#d0d0d0_55%,#474747_100%)] text-transparent">
+            <IconUserCheck className=" mr-4 text-[#d0d0d0]" size={50} stroke={1.5} />
+            Let's get in touch
+          </h1>
+          <button className="border-1 border-black dark:border-gray-400 rounded-md p-2">
+            Contact Me
+          </button>
+        </main>
+        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
           <div className="border-1 border-black dark:border-gray-400 rounded-t-md p-3">
             <GitHubCalendar username="gregvp00" theme={explicitTheme} />
           </div>
-          <h1 className="text-5xl font-medium inline-flex">
-            <IconUserCheck className=" mr-4" size={50} stroke={1.5} />
-            Let's get in touch
-          </h1>
-        </main>
-        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
           <a
             className="flex items-center gap-2 hover:underline hover:underline-offset-4"
             href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"

@@ -28,7 +28,7 @@ export default function Nav() {
           ))}
         </ul>
         <Link href="#" className="z-50 items-center col-span-1">
-          <Image src="/logo.svg" alt="Logo" width={130} height={130} />
+          <Image src="/logo.svg" alt="Logo" width={45} height={45}  />
         </Link>
         <div className="z-50 inline-flex items-center space-x-4 h-full col-span-4">
           <div className="list-none inline-flex h-full items-center hover:text-white">

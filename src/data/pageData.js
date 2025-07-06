@@ -1,4 +1,4 @@
-import { IconBrandAstro } from "@tabler/icons-react";
+import { IconBrandAstro, IconBrandNextjs } from "@tabler/icons-react";
 import { IconBrandTailwind } from "@tabler/icons-react";
 import { IconBrandDocker } from "@tabler/icons-react";
 import { IconBrandGithub } from "@tabler/icons-react";
@@ -103,6 +103,42 @@ export const projects = [
   {
     id: 2,
     src: "/UnknownIcon.png",
+    alt: "PaulaPortfolio",
+    href: "#",
+    category: "Webpage",
+    title: "Paula Portfolio",
+    description:
+      "A personal portfolio webpage, showcasing her work and skills.",
+    badges: [
+      {
+        id: 0,
+        componentName: IconBrandNextjs,
+        color: "text-gray-700",
+        name: "Next.js",
+      },
+      {
+        id: 1,
+        componentName: IconBrandTailwind,
+        color: "text-green-700",
+        name: "Tailwind",
+      }
+    ],
+    socials: [
+      {
+        id: 0,
+        componentName: IconBrandGithub,
+        href: "https://github.com/gregvp00/pauchinchilla",
+      },
+      {
+        id: 1,
+        componentName: IconWorld,
+        href: "https://pauchinchilla.com/",
+      },
+    ],
+  },
+  {
+    id: 3,
+    src: "/UnknownIcon.png",
     alt: "EcommerceAstro",
     href: "#",
     category: "Webpage",
@@ -127,13 +163,7 @@ export const projects = [
         componentName: IconApi,
         color: "text-orange-600",
         name: "Shopify",
-      },
-      {
-        id: 3,
-        componentName: IconFileTypeCss,
-        color: "text-blue-500",
-        name: "CSS",
-      },
+      }
     ],
     socials: [
       {
