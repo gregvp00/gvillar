@@ -40,15 +40,15 @@ export default function Home() {
   return (
     <div>
       <Nav />
-      <div className="grid items-center justify-items-center min-h-screen px-8 py-12 gap-16 sm:px-20">
-        <div className="flex items-center w-full min-h-screen border-b border-solid border-gray-800 dark:border-gray-400">
-          <section className="grid grid-cols-1 lg:grid-cols-2 grid-rows-1 justify-stretch items-center w-full">
+      <div className="grid items-center justify-items-center px-8 py-12 gap-16 lg:px-20">
+        <div className="flex items-center w-full border-b border-solid border-gray-800 dark:border-gray-400">
+          <section className="grid grid-cols-1 xl:grid-cols-2 grid-rows-1 gap-7 justify-between items-center w-full my-14">
             <div className="space-y-4">
-              <h1 className="text-7xl font-[Oooh_Baby] text-[#adccc2]">
+              <h1 className="text-6xl lg:text-7xl max-w-md lg:max-w-lg font-[Oooh_Baby] text-center lg:text-left mx-auto text-[#adccc2]">
                 Gregory Villar P.
               </h1>
               <h3
-                className="text-lg max-w-lg bg-clip-text text-transparent"
+                className="text-md lg:text-lg max-w-sm lg:max-w-lg text-center lg:text-left mx-auto bg-clip-text text-transparent"
                 style={{
                   backgroundImage:
                     "radial-gradient(59.95% 118.21% at 50% 19.91%, #adccc2 0px, #adccc2 0%, #b3b3b3 50%)",
@@ -59,7 +59,7 @@ export default function Home() {
               </h3>
             </div>
             <div className="flex justify-center">
-              <div className="max-w-md shadow-2xl bg-gray-800 border border-[#525f6f] rounded-t-lg  w-80 relative">
+              <div className="w-full left-0 lg:max-w-md aspect-[9:16] shadow-2xl bg-gray-800 border border-[#525f6f] rounded-t-lg">
                 <AppTabs tabs={myTabs} initialTabId="app" />
               </div>
             </div>
@@ -74,7 +74,7 @@ export default function Home() {
             <IconCode className="mr-4 text-[#d0d0d0]" size={50} stroke={1.5} />
             Projects
           </h1>
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mx-20">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mx-8 lg:mx-20">
             {projects.map((data) => (
               <article
                 className="relative rounded-lg hover:-translate-y-1 lg:opacity-75 lg:grayscale lg:hover:grayscale-0 lg:hover:opacity-100 hover:p-0.75 shadow-xl transition-transform duration-300 overflow-hidden group"
@@ -109,7 +109,7 @@ export default function Home() {
                       <h4 className="mt-0.5 text-sm ">{data.description}</h4>
                     </a>
                   </div>
-                  <div className="gap-4 md:gap-8 mt-4 flex flex-none justify-between">
+                  <div className="gap-4 lg:gap-8 mt-4 flex flex-none justify-between">
                     <div className="flex flex-wrap gap-1.5 items-end">
                       {data.badges.map((badges) => (
                         <span
@@ -189,7 +189,7 @@ export default function Home() {
                 }}
               />
             </div>
-            <div className="relative z-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 my-6">
+            <div className="relative z-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 my-6 mx-6">
               <Link
                 href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:59ccfb55-715b-4697-8301-4ed8591ea154"
                 className="relative [text-shadow:2px_2px_4px_rgba(0,0,0,1)] bg-black/80 rounded-lg p-2 text-xl py-2 px-4 text-white hover:-translate-y-1 transition-transform duration-200 shadow-lg shadow-black/70"
@@ -197,7 +197,7 @@ export default function Home() {
                 Download my resume
               </Link>
               <Link
-                href="mailto:gregvp00@gmail.com"
+                href="mailto:contact@gregvillar.com"
                 className="relative [text-shadow:2px_2px_4px_rgba(0,0,0,1)] bg-red-700/80 rounded-lg p-2 text-xl py-2 px-4 text-white hover:-translate-y-1 transition-transform duration-200 shadow-lg shadow-black/70"
               >
                 Send me an email
