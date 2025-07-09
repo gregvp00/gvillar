@@ -8,24 +8,7 @@ i18next.init({
   },
   lng: "en", // Default language
   resources: {
-    en: {
-      translation: {
-        welcome: "Welcome to my site",
-        description: "This is a sample description in English",
-      },
-    },
-    es: {
-      translation: {
-        welcome: "Bienvenido a mi sitio",
-        description: "Esta es una descripción de muestra en español",
-      },
-    },
-    fr: {
-      translation: {
-        welcome: "Bienvenue sur mon site",
-        description: "Ceci est une description d'exemple en français",
-      },
-    },
+    
   },
 });
 export const metadata: Metadata = {
