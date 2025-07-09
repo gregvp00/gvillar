@@ -3,9 +3,8 @@ import Nav from "@/components/Nav";
 import AppPreview from "@/components/AppPreview";
 import CodeEditor from "@/components/CodeEditor"; // <-- 1. Importa el componente de editor de código
 import AppTabs from "@/components/AppTabs"; // <-- 1. Importa el componente de pestañas
-import { projects } from "@/data/pageData.js";
-import { IconCode } from "@tabler/icons-react";
-import { IconUserCheck } from "@tabler/icons-react";
+import { projects } from "@/data/pageData";
+import { IconCode, IconUserCheck } from "@tabler/icons-react";
 import Carousel from "@/components/Carousel";
 import Link from "next/link";
 import AnimatedBlobBackground from "@/components/AnimatedBlobBackground";
@@ -191,7 +190,7 @@ export default function Home() {
             </div>
             <div className="relative z-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 my-6 mx-6">
               <Link
-                href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:59ccfb55-715b-4697-8301-4ed8591ea154"
+                href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:123b4dda-fe60-4e77-8348-974374fc767c"
                 className="relative [text-shadow:2px_2px_4px_rgba(0,0,0,1)] bg-black/80 rounded-lg p-2 text-xl py-2 px-4 text-white hover:-translate-y-1 transition-transform duration-200 shadow-lg shadow-black/70"
               >
                 Download my resume

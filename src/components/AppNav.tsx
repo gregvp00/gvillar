@@ -1,6 +1,13 @@
 "use client";
 
-import { IconMenu2, IconX, IconInbox, IconSettings, IconWallet, IconCash, IconStarFilled } from "@tabler/icons-react";
+import {
+  IconMenu2,
+  IconInbox,
+  IconSettings,
+  IconWallet,
+  IconCash,
+  IconStarFilled,
+} from "@tabler/icons-react";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -53,10 +60,7 @@ export default function AppNav() {
             transition={{ type: "spring", stiffness: 400, damping: 40 }}
             className="absolute inset-0 z-40 cursor-grab active:cursor-grabbing"
           >
-            <div
-              onClick={toggleMenu}
-              className="absolute inset-0"
-            />
+            <div onClick={toggleMenu} className="absolute inset-0" />
 
             <div
               className="absolute top-0 left-0 h-full w-64 bg-gray-800 text-white py-6 px-4 z-50 shadow-2xl"
@@ -70,8 +74,13 @@ export default function AppNav() {
                     className="w-8 h-8 rounded-full border-1 border-white object-cover"
                   />
                   <div className="flex flex-col">
-                    <span className="font-bold text-sm text-white">Lorem Ipsum</span>
-                    <span className="text-xs text-gray-400 inline-flex items-center gap-0.5"><IconStarFilled size={10} />4.99</span>
+                    <span className="font-bold text-sm text-white">
+                      Lorem Ipsum
+                    </span>
+                    <span className="text-xs text-gray-400 inline-flex items-center gap-0.5">
+                      <IconStarFilled size={10} />
+                      4.99
+                    </span>
                   </div>
                 </div>
               </div>

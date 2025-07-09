@@ -5,16 +5,18 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { IconBrandAstro } from "@tabler/icons-react";
-import { IconBrandTailwind } from "@tabler/icons-react";
-import { IconBrandNextjs } from "@tabler/icons-react";
-import { IconBrandDocker } from "@tabler/icons-react";
-import { IconBrandNextcloud } from "@tabler/icons-react";
-import { IconBrandAdobePhotoshop } from "@tabler/icons-react";
-import { IconBrandDebian } from "@tabler/icons-react";
-import { IconBrandGit } from "@tabler/icons-react";
-import { IconBrandFigma } from "@tabler/icons-react";
-import { IconBrandMysql } from "@tabler/icons-react";
+import {
+  IconBrandAstro,
+  IconBrandTailwind,
+  IconBrandNextjs,
+  IconBrandDocker,
+  IconBrandNextcloud,
+  IconBrandAdobePhotoshop,
+  IconBrandDebian,
+  IconBrandGit,
+  IconBrandFigma,
+  IconBrandMysql,
+} from "@tabler/icons-react";
 
 export default function Carousel() {
   const [nav1, setNav1] = useState<Slider | null>(null);
