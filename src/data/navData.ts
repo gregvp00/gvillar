@@ -1,4 +1,15 @@
-export const navLeft = [
+// --- Definición de Tipos (Interfaces) ---
+
+// Interfaz para los elementos de navegación
+interface NavItem {
+  id: number;
+  title: string;
+  href: string;
+}
+
+// --- Datos de Navegación ---
+
+export const navLeft: NavItem[] = [
   {
     id: 0,
     title: "PROJECTS",

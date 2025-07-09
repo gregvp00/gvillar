@@ -3,11 +3,9 @@
 import Image from "next/image";
 import { motion, useScroll } from "motion/react";
 import Link from "next/link";
-import { navLeft } from "../data/navData.js";
-import { MessageSquareText } from "lucide-react";
-import { UserRound } from "lucide-react";
+import { navLeft } from "@/data/navData";
+import { MessageSquareText, UserRound, Languages } from "lucide-react";
 import { IconBrandGithub } from "@tabler/icons-react";
-import { Languages } from "lucide-react";
 
 export default function Nav() {
   const { scrollYProgress } = useScroll();

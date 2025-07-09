@@ -9,13 +9,12 @@ export default function AppPreview() {
         <Image
           src="/appPreview.svg"
           alt="App Preview"
-          layout="fill"
-          objectFit="cover"
-          className="z-0 pointer-events-none"
+          fill
+          className="z-0 pointer-events-none object-cover"
         />
-        
-        <AppNav/>
-        
+
+        <AppNav />
+
         <AppBottomDrawer />
       </main>
     </div>

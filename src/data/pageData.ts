@@ -1,15 +1,54 @@
-import { IconBrandAstro, IconBrandNextjs } from "@tabler/icons-react";
-import { IconBrandTailwind } from "@tabler/icons-react";
-import { IconBrandDocker } from "@tabler/icons-react";
-import { IconBrandGithub } from "@tabler/icons-react";
-import { IconWorld } from "@tabler/icons-react";
-import { IconBrandNextcloud } from "@tabler/icons-react";
-import { IconFileTypeHtml } from "@tabler/icons-react";
-import { IconFileTypeCss } from "@tabler/icons-react";
-import { IconFileTypeJs } from "@tabler/icons-react";
-import { IconApi } from "@tabler/icons-react";
+import React from "react"; // Importamos React para usar sus tipos
+import {
+  IconBrandAstro,
+  IconBrandNextjs,
+  IconBrandTailwind,
+  IconBrandDocker,
+  IconBrandGithub,
+  IconWorld,
+  IconBrandNextcloud,
+  IconFileTypeHtml,
+  IconFileTypeCss,
+  IconFileTypeJs,
+  IconApi,
+} from "@tabler/icons-react";
 
-export const projects = [
+// --- Definición de Tipos (Interfaces) ---
+
+// Un tipo genérico para los componentes de íconos de React
+type IconType = React.ElementType;
+
+// Interfaz para los badges de tecnología
+interface Badge {
+  id: number;
+  componentName: IconType;
+  color: string;
+  name: string;
+}
+
+// Interfaz para los enlaces a redes sociales o sitios web
+interface Social {
+  id: number;
+  componentName: IconType;
+  href: string;
+}
+
+// Interfaz principal para cada proyecto
+interface Project {
+  id: number;
+  src: string;
+  alt: string;
+  href: string;
+  category: string;
+  title: string;
+  description: string;
+  badges: Badge[];
+  socials: Social[];
+}
+
+// --- Datos de los Proyectos ---
+
+export const projects: Project[] = [
   {
     id: 0,
     src: "/FincasBarahona.jpg",
@@ -168,13 +207,8 @@ export const projects = [
     socials: [
       {
         id: 0,
-        componentName: IconFileTypeJs,
-        href: "#",
-      },
-      {
-        id: 1,
-        componentName: IconFileTypeJs,
-        href: "#",
+        componentName: IconBrandGithub,
+        href: "https://github.com/gregvp00/pauchinchilla",
       },
     ],
   },
