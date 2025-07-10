@@ -1,3 +1,6 @@
+"use client";
+import { useEffect } from "react";
+
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import AppPreview from "@/components/AppPreview";
@@ -35,6 +38,27 @@ export default function Home() {
     },
   ];
   // --- Fin de la definición ---
+
+  useEffect(() => {
+    const emailLink = document.getElementById("email-link");
+
+    const handleEmailClick = () => {
+      const usuario = emailLink.getAttribute("data-usuario");
+      const dominio = emailLink.getAttribute("data-dominio");
+      window.location.href = `mailto:${usuario}@${dominio}?subject=Consulta desde la web`;
+    };
+
+    if (emailLink) {
+      emailLink.addEventListener("click", handleEmailClick);
+    }
+
+    // Limpieza: elimina el event listener cuando el componente se desmonte
+    return () => {
+      if (emailLink) {
+        emailLink.removeEventListener("click", handleEmailClick);
+      }
+    };
+  }, []); // El array vacío asegura que este efecto se ejecute solo una vez
 
   return (
     <div>
@@ -195,12 +219,14 @@ export default function Home() {
               >
                 Download my resume
               </Link>
-              <Link
-                href="mailto:contact@gregvillar.com"
-                className="relative [text-shadow:2px_2px_4px_rgba(0,0,0,1)] bg-red-700/80 rounded-lg p-2 text-xl py-2 px-4 text-white hover:-translate-y-1 transition-transform duration-200 shadow-lg shadow-black/70"
+              <button
+                id="email-link"
+                data-usuario="contact"
+                data-dominio="gregvillar.com"
+                className="relative cursor-pointer [text-shadow:2px_2px_4px_rgba(0,0,0,1)] bg-red-700/80 rounded-lg p-2 text-xl py-2 px-4 text-white hover:-translate-y-1 transition-transform duration-200 shadow-lg shadow-black/70"
               >
                 Send me an email
-              </Link>
+              </button>
               <Link
                 href="https://calendly.com/gregvp002/30min"
                 className="relative [text-shadow:2px_2px_4px_rgba(0,0,0,1)] bg-blue-700/80 rounded-lg p-2 text-xl py-2 px-4 text-white hover:-translate-y-1 transition-transform duration-200 shadow-lg shadow-black/70"
