@@ -177,7 +177,7 @@ export const projects: Project[] = [
   },
   {
     id: 3,
-    src: "/UnknownIcon.png",
+    src: "/UnknownIcon.jpg",
     alt: "EcommerceAstro",
     href: "#",
     category: "Webpage",

@@ -58,7 +58,7 @@ export default function Home() {
               </h3>
             </div>
             <div className="flex justify-center">
-              <div className="w-full left-0 lg:max-w-md aspect-[9:16] shadow-2xl bg-gray-800 border border-[#525f6f] rounded-t-lg">
+              <div className="w-full left-0 md:max-w-md aspect-[9:16] shadow-2xl bg-gray-800 border border-[#525f6f] rounded-t-lg">
                 <AppTabs tabs={myTabs} initialTabId="app" />
               </div>
             </div>

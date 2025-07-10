@@ -1,16 +1,6 @@
 import type { Metadata } from "next";
-import i18next from "i18next";
 import "./globals.css";
 
-i18next.init({
-  interpolation: {
-    escapeValue: false, // React already does escaping
-  },
-  lng: "en", // Default language
-  resources: {
-    
-  },
-});
 export const metadata: Metadata = {
   title: "Gregory Villar",
   description: "Created with react next and love",
