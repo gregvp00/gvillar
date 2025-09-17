@@ -1,8 +1,9 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Image from "next/image";
 import Nav from "@/components/Nav";
+import MobileNav from "@/components/MobileNav";
 import AppPreview from "@/components/AppPreview";
 import CodeEditor from "@/components/CodeEditor";
 import AppTabs from "@/components/AppTabs";
@@ -13,6 +14,15 @@ import Link from "next/link";
 import AnimatedBlobBackground from "@/components/AnimatedBlobBackground";
 
 export default function Home() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 1536);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   const explicitTheme = {
     light: ["#ffffff", "#a8f0be", "#51e17c", "#1eae49", "#116329"],
     dark: ["#000000", "#103d15", "#1f7a2a", "#2fb63f", "#56d364"],
@@ -89,7 +99,7 @@ export default function Home() {
 
   return (
     <div>
-      <Nav />
+      {isMobile ? <MobileNav /> : <Nav />}
       <div className="grid items-center justify-items-center px-8 py-12 gap-16 lg:px-20">
         <div className="flex items-center w-full border-b border-solid border-gray-800 dark:border-gray-400">
           <section className="grid grid-cols-1 xl:grid-cols-2 grid-rows-1 gap-7 justify-between items-center w-full my-14">
@@ -216,7 +226,9 @@ export default function Home() {
               impactful developer.
             </p>
           </div>
-          <Carousel />
+          <div className="mx-auto items-center">
+            <Carousel />
+          </div>
 
           <h1 className="text-5xl font-medium inline-flex bg-clip-text bg-[linear-gradient(91deg,#474747_0%,#d0d0d0_55%,#474747_100%)] text-transparent">
             <IconUserCheck
