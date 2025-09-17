@@ -33,21 +33,6 @@ body {
   height: 100%;
 }
 
-@theme {
-  --keyframes-background: {
-    0%,
-    100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-  --animate-border: background ease infinite;
-}
-
-/* Custom CSS for the animated SVG background */
-
 @keyframes rotate-blob {
   0% {
     transform: rotate(0deg);

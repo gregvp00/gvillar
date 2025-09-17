@@ -6,7 +6,6 @@ import { IconBrandGithub } from "@tabler/icons-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-// MobileNav.tsx
 export default function MobileNav() {
   const pathname = usePathname();
   const [active, setActive] = useState<string>(pathname ?? "/");
