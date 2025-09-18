@@ -44,7 +44,7 @@ body {
 
 .animate-blob-out-top {
   animation: rotate-blob 20s linear infinite;
-  transform-origin: 13px 25px; /* Estos valores son críticos para la rotación */
+  transform-origin: 13px 25px;
 }
 
 .animate-blob-in-top {
