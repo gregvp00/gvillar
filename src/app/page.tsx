@@ -28,14 +28,19 @@ export default function Home() {
     dark: ["#000000", "#103d15", "#1f7a2a", "#2fb63f", "#56d364"],
   };
 
-  const animatedRefs = useRef(new Map());
+  const animatedRefs = useRef<Map<string, Element | null>>(new Map());
 
   useEffect(() => {
-    const emailLink = document.getElementById("email-link");
+    const emailLink = document.getElementById(
+      "email-link"
+    ) as HTMLElement | null;
 
-    const handleEmailClick = () => {
-      const usuario = emailLink.getAttribute("data-usuario");
-      const dominio = emailLink.getAttribute("data-dominio");
+    const handleEmailClick = (event: Event) => {
+      const el = event.currentTarget as HTMLElement | null;
+      if (!el) return;
+      const usuario = el.getAttribute("data-usuario") ?? "";
+      const dominio = el.getAttribute("data-dominio") ?? "";
+      if (!usuario || !dominio) return;
       window.location.href = `mailto:${usuario}@${dominio}?subject=Consulta desde la web`;
     };
 
@@ -43,13 +48,16 @@ export default function Home() {
       emailLink.addEventListener("click", handleEmailClick);
     }
 
-    const observerOptions = {
+    const observerOptions: IntersectionObserverInit = {
       root: null,
       rootMargin: "0px",
       threshold: 0.2,
     };
 
-    const observerCallback = (entries, observer) => {
+    const observerCallback: IntersectionObserverCallback = (
+      entries: IntersectionObserverEntry[],
+      observer: IntersectionObserver
+    ) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.remove("opacity-75", "grayscale");
@@ -65,9 +73,7 @@ export default function Home() {
     );
 
     animatedRefs.current.forEach((element) => {
-      if (element) {
-        observer.observe(element);
-      }
+      if (element) observer.observe(element);
     });
 
     return () => {
@@ -138,7 +144,9 @@ export default function Home() {
             {projects.map((data) => (
               <article
                 key={data.id}
-                ref={(element) => animatedRefs.current.set(data.id, element)}
+                ref={(element) => {
+                  animatedRefs.current.set(String(data.id), element);
+                }}
                 className="relative rounded-lg opacity-75 grayscale lg:hover:grayscale-0 lg:hover:opacity-100 hover:p-0.75 shadow-xl transition-transform duration-300 overflow-hidden group"
               >
                 <div className="absolute -z-10 bg-[#8b3037] inset-0">

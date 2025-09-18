@@ -99,7 +99,7 @@ export default function AppNav() {
                   <img
                     src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
                     alt="Avatar de usuario"
-                    className="w-8 h-8 rounded-full border-1 border-white object-cover"
+                    className="w-8 h-8 rounded-full border border-white object-cover"
                   />
                   <div className="flex flex-col">
                     <span className="font-bold text-sm text-white">Lorem Ipsum</span>

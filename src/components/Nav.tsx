@@ -12,7 +12,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className="z-40 grid grid-cols-9 grid-rows-1 place-items-center fixed top-0 items-center w-full h-12 px-80 nav-background backdrop-blur-md shadow-sm text-sm border-b-1 border-white/20">
+      <nav className="z-40 grid grid-cols-9 grid-rows-1 place-items-center fixed top-0 items-center w-full h-12 px-80 nav-background backdrop-blur-md shadow-sm text-sm border-b border-white/20">
         <ul className="z-50 flex items-center space-x-4 col-span-4 h-full">
           {navLeft.map((nav) => (
             <li key={nav.id} className="h-full">

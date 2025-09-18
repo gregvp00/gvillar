@@ -1,29 +1,23 @@
 import React from "react";
 
-// Define la interfaz para las propiedades de los colores del blob
 interface BlobColors {
-  first?: string; // El signo de interrogación '?' hace que la propiedad sea opcional
+  first?: string;
   second?: string;
   third?: string;
 }
 
-// Define la interfaz para las props del componente AnimatedBlobBackground
 interface AnimatedBlobBackgroundProps {
-  colors?: BlobColors; // El prop 'colors' en sí mismo es opcional y de tipo BlobColors
+  colors?: BlobColors;
 }
 
 const AnimatedBlobBackground: React.FC<AnimatedBlobBackgroundProps> = ({
   colors,
 }) => {
-  // Colores por defecto que se usarán si no se proporcionan o si alguna propiedad es undefined
   const defaultColors: BlobColors = {
     first: "#d8cfc0",
     second: "#adccc2",
     third: "#525f6f",
   };
-
-  // Se combinan los colores proporcionados con los por defecto
-  // `colors?.first` usa el encadenamiento opcional para evitar errores si `colors` es undefined
   const blobColors = {
     first: colors?.first || defaultColors.first,
     second: colors?.second || defaultColors.second,

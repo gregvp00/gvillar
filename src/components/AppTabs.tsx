@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-// Definimos los tipos para las props
 type Tab = {
   id: string;
   label: string;
@@ -15,23 +14,21 @@ type AppTabsProps = {
   initialTabId?: string;
 };
 
-// CAMBIO: El nombre del componente ahora es AppTabs
 export default function AppTabs({ tabs, initialTabId }: AppTabsProps) {
   const [activeTab, setActiveTab] = useState(initialTabId || tabs[0].id);
-  const activeContent = tabs.find(tab => tab.id === activeTab)?.content;
+  const activeContent = tabs.find((tab) => tab.id === activeTab)?.content;
 
   return (
     <div className="w-full h-full flex flex-col">
-      {/* Botones de las pestañas */}
       <div className="flex border-b border-gray-700">
-        {tabs.map(tab => (
+        {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`py-2 px-4 text-sm font-medium transition-colors focus:outline-none ${
               activeTab === tab.id
-                ? 'border-b-2 border-white text-white'
-                : 'text-gray-400 hover:text-white'
+                ? "border-b-2 border-white text-white"
+                : "text-gray-400 hover:text-white"
             }`}
           >
             {tab.label}
@@ -39,8 +36,7 @@ export default function AppTabs({ tabs, initialTabId }: AppTabsProps) {
         ))}
       </div>
 
-      {/* Área del Contenido */}
-      <div className="flex-grow relative">
+      <div className="grow relative">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
