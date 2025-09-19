@@ -50,7 +50,7 @@ export default function Carousel() {
     arrows: false,
   };
   return (
-    <div className="items-center justify-center text-center slider-container w-lg mask-[linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]">
+    <div className="items-center justify-center text-center slider-container w-96 mx-auto mask-[linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]">
       <Slider asNavFor={nav2 as Slider} ref={sliderRef1} {...settingsNav1}>
         <div>
           <h3>Astro</h3>

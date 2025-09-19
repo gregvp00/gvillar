@@ -234,9 +234,7 @@ export default function Home() {
               impactful developer.
             </p>
           </div>
-          <div className="mx-auto items-center">
-            <Carousel />
-          </div>
+          <Carousel />
 
           <h1 className="text-5xl font-medium inline-flex bg-clip-text bg-[linear-gradient(91deg,#474747_0%,#d0d0d0_55%,#474747_100%)] text-transparent">
             <IconUserCheck
