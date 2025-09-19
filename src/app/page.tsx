@@ -31,6 +31,54 @@ export default function Home() {
   const animatedRefs = useRef<Map<string, Element | null>>(new Map());
 
   useEffect(() => {
+    const observerOptions: IntersectionObserverInit = {
+      root: null,
+      rootMargin: "-10% 0px -10% 0px", // Se activa cuando está más centrado
+      threshold: window.innerWidth < 1024 ? [0.1, 0.3, 0.5, 0.7] : 0.2,
+    };
+
+    const observerCallback: IntersectionObserverCallback = (
+      entries: IntersectionObserverEntry[],
+      observer: IntersectionObserver
+    ) => {
+      entries.forEach((entry) => {
+        const element = entry.target as HTMLElement;
+        const ratio = entry.intersectionRatio;
+
+        if (window.innerWidth < 1024) {
+          // Efecto progresivo para móvil basado en cuánto está visible
+          if (ratio > 0.5) {
+            // Totalmente activo cuando más del 50% está visible
+            element.classList.remove("opacity-75", "grayscale-50", "p-0");
+            element.classList.add("opacity-100", "grayscale-0", "p-0.75");
+            element.style.transform = "scale(1.02)"; // Pequeño zoom
+          } else if (ratio > 0.2) {
+            // Parcialmente activo
+            element.classList.remove("opacity-75", "grayscale-50", "p-0");
+            element.classList.add("opacity-90", "grayscale-25");
+            element.style.transform = "scale(1.01)";
+          } else {
+            // Estado inicial
+            element.classList.remove(
+              "opacity-100",
+              "opacity-90",
+              "grayscale-0",
+              "grayscale-25",
+              "p-0.75"
+            );
+            element.classList.add("opacity-75", "grayscale-50", "p-0");
+            element.style.transform = "scale(1)";
+          }
+        } else {
+          // Comportamiento original para desktop
+          if (entry.isIntersecting) {
+            element.classList.remove("opacity-75", "grayscale");
+            element.classList.add("opacity-100", "grayscale-0");
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    };
     const emailLink = document.getElementById(
       "email-link"
     ) as HTMLElement | null;
@@ -47,25 +95,6 @@ export default function Home() {
     if (emailLink) {
       emailLink.addEventListener("click", handleEmailClick);
     }
-
-    const observerOptions: IntersectionObserverInit = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.2,
-    };
-
-    const observerCallback: IntersectionObserverCallback = (
-      entries: IntersectionObserverEntry[],
-      observer: IntersectionObserver
-    ) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove("opacity-75", "grayscale");
-          entry.target.classList.add("opacity-100", "grayscale-0");
-          observer.unobserve(entry.target);
-        }
-      });
-    };
 
     const observer = new IntersectionObserver(
       observerCallback,
@@ -109,7 +138,7 @@ export default function Home() {
       <div className="grid items-center justify-items-center px-8 py-12 gap-16 lg:px-20">
         <div className="flex items-center w-full border-b border-solid border-gray-800 dark:border-gray-400">
           <section className="grid grid-cols-1 xl:grid-cols-2 grid-rows-1 gap-7 justify-between items-center w-full my-14">
-            <div className="space-y-4">
+            <div className="space-y-4 mb-12">
               <h1 className="text-6xl lg:text-7xl max-w-md lg:max-w-lg font-[Oooh_Baby] text-center lg:text-left mx-auto text-[#adccc2]">
                 Gregory Villar P.
               </h1>
@@ -125,7 +154,7 @@ export default function Home() {
               </h3>
             </div>
             <div className="flex justify-center">
-              <div className="w-full left-0 md:max-w-md aspect-[9/16] shadow-2xl bg-gray-800 border border-[#525f6f] rounded-t-lg">
+              <div className="w-full left-0 md:max-w-md shadow-2xl bg-gray-800 border border-[#525f6f] rounded-t-lg">
                 <AppTabs tabs={myTabs} initialTabId="app" />
               </div>
             </div>
@@ -147,7 +176,7 @@ export default function Home() {
                 ref={(element) => {
                   animatedRefs.current.set(String(data.id), element);
                 }}
-                className="relative rounded-lg opacity-75 grayscale lg:hover:grayscale-0 lg:hover:opacity-100 hover:p-0.75 shadow-xl transition-transform duration-300 overflow-hidden group"
+                className="relative rounded-lg opacity-75 grayscale-50 lg:hover:grayscale-0 lg:hover:opacity-100 hover:p-0.75 shadow-xl transition-transform duration-500 overflow-hidden group"
               >
                 <div className="absolute -z-10 bg-[#8b3037] inset-0">
                   <AnimatedBlobBackground />
@@ -281,13 +310,13 @@ export default function Home() {
             </div>
           </div>
         </main>
-        <footer className="grid grid-cols-2 justify-between items-center gap-80">
-          <div>
-            <h3 className="">Location</h3>
+        <footer className="grid grid-cols-2 w-full">
+          <div className="justify-self-start text-left">
+            <h3>Location</h3>
             <h3 className="opacity-70">Valencia, Spain</h3>
           </div>
-          <div>
-            <h3 className="">Developed by Gregory Villar</h3>
+          <div className="justify-self-end text-right">
+            <h3>Developed by Gregory Villar</h3>
             <h3 className="opacity-70">© 2025</h3>
           </div>
         </footer>
