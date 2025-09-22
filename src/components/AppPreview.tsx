@@ -10,7 +10,7 @@ export default function AppPreview() {
         style={{ position: "relative" }}
       >
         <Image
-          src="/appPreview.svg"
+          src="/appPreview.webp"
           alt="App Preview"
           fill
           priority

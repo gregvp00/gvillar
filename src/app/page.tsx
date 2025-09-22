@@ -176,7 +176,7 @@ export default function Home() {
                 ref={(element) => {
                   animatedRefs.current.set(String(data.id), element);
                 }}
-                className="relative rounded-lg opacity-75 grayscale-50 lg:hover:grayscale-0 lg:hover:opacity-100 hover:p-0.75 shadow-xl transition-transform duration-500 overflow-hidden group"
+                className="relative rounded-lg opacity-75 grayscale-50 lg:hover:grayscale-0 lg:hover:opacity-100 p-0 hover:p-0.75 transition-all shadow-xl duration-100 overflow-hidden group"
               >
                 <div className="absolute -z-10 bg-[#8b3037] inset-0">
                   <AnimatedBlobBackground />

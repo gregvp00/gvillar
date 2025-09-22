@@ -36,7 +36,6 @@ export default function NavWithClockAndSettings({
   const [now, setNow] = useState(new Date());
   const [locale, setLocale] = useState(initialLanguage);
   const [showSettings, setShowSettings] = useState(false);
-  const [items, setItems] = useState<string[]>(["Ejemplo: tema claro/oscuro"]);
 
   // For OS-like window position/draggable
   const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -101,10 +100,6 @@ export default function NavWithClockAndSettings({
     timeStyle: "medium",
     timeZone,
   }).format(now);
-
-  const addSettingPlaceholder = () => {
-    setItems((s) => [...s, `Nueva opción ${s.length + 1}`]);
-  };
 
   return (
     <>
