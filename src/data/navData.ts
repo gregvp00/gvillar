@@ -25,9 +25,4 @@ export const navLeft: NavItem[] = [
     title: "CONTACT",
     href: "#contact",
   },
-  {
-    id: 3,
-    title: "CV",
-    href: "https://acrobat.adobe.com/id/urn:aaid:sc:EU:ad63d264-d78b-432d-ac1f-ebe272684569",
-  },
 ];
