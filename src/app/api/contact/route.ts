@@ -1,21 +1,19 @@
 // src/app/api/contact/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import nodemailer from "nodemailer";
 
 const serverSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
   message: z.string().min(5),
   interests: z.array(z.string()).optional(),
-  captcha: z.string().min(1),
+  captcha: z.string().nonempty(),
 });
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const parsed = serverSchema.safeParse(body);
-
     if (!parsed.success) {
       return NextResponse.json(
         { error: "Invalid payload", issues: parsed.error.format() },
@@ -25,6 +23,7 @@ export async function POST(req: NextRequest) {
 
     const { name, email, message, interests, captcha } = parsed.data;
 
+    // --- Turnstile verification always ---
     const secret = process.env.TURNSTILE_SECRET;
     if (!secret) {
       console.error("TURNSTILE_SECRET missing");
@@ -34,7 +33,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Verificar token con Turnstile
     const params = new URLSearchParams();
     params.append("secret", secret);
     params.append("response", captcha);
@@ -51,48 +49,35 @@ export async function POST(req: NextRequest) {
     const data = await verifyRes.json();
 
     if (!data.success) {
-      console.warn("Turnstile failed:", data);
+      console.warn("Turnstile verification failed:", data);
       return NextResponse.json(
-        { error: "Captcha verification failed", details: data["error-codes"] },
+        {
+          error: "Captcha verification failed",
+          details: data["error-codes"] || data,
+        },
         { status: 400 }
       );
     }
 
-    // Opcional: comprobar action y hostname si quieres más seguridad
     if (data.action && data.action !== "submit-form") {
       return NextResponse.json(
         { error: "Invalid captcha action" },
         { status: 400 }
       );
     }
-    // if (data.hostname && !String(data.hostname).endsWith("tudominio.com")) { ... }
 
-    // ---------- CAPTCHA verificado: ahora enviar el correo ----------
-    // Configurar transporter con env vars
-    const smtpHost = process.env.SMTP_HOST;
-    const smtpPort = Number(process.env.SMTP_PORT ?? 587);
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
-    const smtpFrom = process.env.SMTP_FROM ?? smtpUser;
-    const contactTo = process.env.CONTACT_TO; // email receptor
+    // ---------- Send email via SendGrid REST API ----------
+    const sendgridKey = process.env.SENDGRID_API_KEY;
+    const senderEmail = process.env.SENDER_EMAIL ?? process.env.SMTP_FROM;
+    const contactTo = process.env.CONTACT_TO;
 
-    if (!smtpHost || !smtpUser || !smtpPass || !contactTo) {
-      console.error("SMTP env vars missing");
+    if (!sendgridKey || !senderEmail || !contactTo) {
+      console.error("SendGrid env vars missing");
       return NextResponse.json(
         { error: "Email not configured on server" },
         { status: 500 }
       );
     }
-
-    const transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: smtpPort,
-      secure: smtpPort === 465, // true para 465, false para 587/other
-      auth: {
-        user: smtpUser,
-        pass: smtpPass,
-      },
-    });
 
     const mailText = `
 You have a new contact form submission:
@@ -103,25 +88,60 @@ Interests: ${interests?.join(", ") ?? "None"}
 
 Message:
 ${message}
-`;
+`.trim();
 
-    await transporter.sendMail({
-      from: `"Website Contact" <${smtpFrom}>`,
-      to: contactTo,
-      subject: `New contact from ${name}`,
-      text: mailText,
+    const mailHtml = `
+      <p>You have a new contact form submission:</p>
+      <ul>
+        <li><strong>Name:</strong> ${name}</li>
+        <li><strong>Email:</strong> ${email}</li>
+        <li><strong>Interests:</strong> ${interests?.join(", ") ?? "None"}</li>
+      </ul>
+      <p><strong>Message:</strong></p>
+      <p>${message.replace(/\n/g, "<br/>")}</p>
+    `;
+
+    const payload = {
+      personalizations: [
+        {
+          to: [{ email: contactTo }],
+          subject: `New contact from ${name}`,
+        },
+      ],
+      from: { email: senderEmail, name: "Website Contact" },
+      reply_to: { email, name },
+      content: [
+        { type: "text/plain", value: mailText },
+        { type: "text/html", value: mailHtml },
+      ],
+    };
+
+    const sgRes = await fetch("https://api.sendgrid.com/v3/mail/send", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${sendgridKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
     });
 
-    // No devolver ni loguear tokens secretos
-    console.log("Contact validated and email sent:", {
+    if (!sgRes.ok) {
+      const errText = await sgRes.text().catch(() => "");
+      console.error("SendGrid API error:", sgRes.status, errText);
+      return NextResponse.json(
+        { error: "Mail provider error" },
+        { status: 502 }
+      );
+    }
+
+    console.log("Contact validated and email sent via SendGrid:", {
       name,
       email,
       interests,
     });
-
-    return NextResponse.json({ ok: true, message: "Form received" });
+    return NextResponse.json({ success: true });
   } catch (err) {
-    console.error("Error in /api/contact:", err);
+    console.error("❌ Error en /api/contact:", err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

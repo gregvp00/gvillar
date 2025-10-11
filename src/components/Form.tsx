@@ -109,11 +109,7 @@ export default function ContactForm() {
 
         <div>
           <label className="inline-flex items-center gap-2">
-            <input
-              type="checkbox"
-              value="Illustration"
-              {...register("interests")}
-            />
+            <input type="checkbox" value="WebDev" {...register("interests")} />
             <span>Website development</span>
           </label>
         </div>
@@ -125,11 +121,7 @@ export default function ContactForm() {
         </div>
         <div>
           <label className="inline-flex items-center gap-2">
-            <input
-              type="checkbox"
-              value="Branding/Logo"
-              {...register("interests")}
-            />
+            <input type="checkbox" value="Connect" {...register("interests")} />
             <span>Connect</span>
           </label>
         </div>
