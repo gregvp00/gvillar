@@ -12,6 +12,7 @@ import { IconCode, IconUserCheck } from "@tabler/icons-react";
 import Carousel from "@/components/Carousel";
 import Link from "next/link";
 import AnimatedBlobBackground from "@/components/AnimatedBlobBackground";
+import ContactForm from "@/components/Form";
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
@@ -275,9 +276,9 @@ export default function Home() {
           </h1>
           <div
             id="contact"
-            className="relative inline-block hover:scale-101 grayscale-75 hover:grayscale-0 duration-300 w-full"
+            className="relative inline-block hover:scale-101  duration-300 w-full"
           >
-            <div className="absolute -inset-1 -z-10 rounded-md overflow-hidden bg-yellow-300">
+            <div className="absolute -inset-1 -z-10 rounded-md overflow-hidden bg-yellow-300 grayscale-50">
               <AnimatedBlobBackground
                 colors={{
                   first: "#525f6f",
@@ -285,6 +286,9 @@ export default function Home() {
                   third: "#FFFFFF",
                 }}
               />
+            </div>
+            <div className="mx-auto mt-6">
+              <ContactForm />
             </div>
             <div className="relative z-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 my-6 mx-6">
               <Link
