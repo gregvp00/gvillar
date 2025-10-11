@@ -194,6 +194,7 @@ export default function Home() {
                         alt={data.alt}
                         width={1500}
                         height={1500}
+                        sizes="(max-width: 768px) 80vw, 450px"
                         className="w-full h-auto object-cover rounded-t-md"
                       />
                     </a>
