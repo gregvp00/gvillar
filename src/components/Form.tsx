@@ -74,7 +74,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-md mx-auto p-4 bg-white rounded shadow text-gray-800"
+      className="max-w-md mx-auto p-4 bg-white rounded shadow-md shadow-gray-600 text-gray-800"
     >
       <div>
         <label className="block">

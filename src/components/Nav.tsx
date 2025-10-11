@@ -23,9 +23,7 @@ interface Props {
 }
 
 export default function NavWithClockAndSettings({
-  initialLanguage = typeof navigator !== "undefined"
-    ? navigator.language
-    : "en-US",
+  initialLanguage = "en-US", // fallback neutral: no usar navigator aquí
   languages = [
     { code: "en-US", label: "English" },
     { code: "es-ES", label: "Español" },
@@ -33,9 +31,11 @@ export default function NavWithClockAndSettings({
   ],
   onLanguageChange,
 }: Props) {
-  const [now, setNow] = useState(new Date());
-  const [locale, setLocale] = useState(initialLanguage);
+  const [now, setNow] = useState<Date>(new Date());
+  const [locale, setLocale] = useState<string>(initialLanguage);
+  const [theme, setTheme] = useState<string>("default");
   const [showSettings, setShowSettings] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   // For OS-like window position/draggable
   const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -43,10 +43,19 @@ export default function NavWithClockAndSettings({
   const startRef = useRef<{ x: number; y: number } | null>(null);
   const winRef = useRef<HTMLDivElement | null>(null);
 
+  // Reloj: actualiza cada segundo (esto solo corre en cliente porque es un client component)
   useEffect(() => {
+    setIsMounted(true); // ya estamos en cliente
     const id = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(id);
   }, []);
+
+  // Leer la locale del navegador una vez en cliente (evita discrepancias SSR/CSR)
+  useEffect(() => {
+    if (typeof navigator !== "undefined") {
+      setLocale(navigator.language || initialLanguage);
+    }
+  }, [initialLanguage]);
 
   useEffect(() => {
     if (onLanguageChange) onLanguageChange(locale);
@@ -85,21 +94,33 @@ export default function NavWithClockAndSettings({
   const startDrag = (e: React.PointerEvent) => {
     draggingRef.current = true;
     startRef.current = { x: e.clientX, y: e.clientY };
-    // prevent selecting text while dragging
     document.body.style.userSelect = "none";
-    // capture pointer to ensure we keep receiving events
     (e.target as Element).setPointerCapture?.(e.pointerId);
   };
 
-  const timeZone =
-    typeof Intl !== "undefined"
-      ? Intl.DateTimeFormat().resolvedOptions().timeZone
-      : "UTC";
-  const formatted = new Intl.DateTimeFormat(locale, {
-    dateStyle: "full",
-    timeStyle: "medium",
-    timeZone,
-  }).format(now);
+  // Detect timezone only on client to avoid mismatch
+  const [timeZone, setTimeZone] = useState<string>("UTC");
+  useEffect(() => {
+    if (
+      typeof Intl !== "undefined" &&
+      typeof Intl.DateTimeFormat === "function"
+    ) {
+      try {
+        setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC");
+      } catch {
+        setTimeZone("UTC");
+      }
+    }
+  }, []);
+
+  // Format date/time only when mounted (client) to keep SSR stable
+  const formatted = isMounted
+    ? new Intl.DateTimeFormat(locale, {
+        dateStyle: "full",
+        timeStyle: "medium",
+        timeZone,
+      }).format(now)
+    : ""; // fallback vacío en SSR (evita mismatch)
 
   return (
     <>
@@ -123,7 +144,7 @@ export default function NavWithClockAndSettings({
 
             <Link href="#" className="flex-1 flex items-center justify-center">
               <div className="text-sm font-medium text-gray-700 dark:text-gray-200 select-none">
-                {formatted}
+                {formatted || "Loading..."}
               </div>
             </Link>
 
@@ -133,14 +154,14 @@ export default function NavWithClockAndSettings({
                 title="CV"
                 className="inline-flex items-center hover:text-white gap-2 px-3.25 py-1.75 rounded-sm hover:bg-gray-800"
               >
-                <IconFileSearch className="" size={18} />
+                <IconFileSearch size={18} />
               </Link>
               <Link
                 href="https://github.com/gregvp00"
                 title="Github"
                 className="inline-flex items-center hover:text-white gap-2 px-3.25 py-1.75 rounded-sm hover:bg-gray-800"
               >
-                <IconBrandGithub className="" size={18} />
+                <IconBrandGithub size={18} />
               </Link>
               <button
                 aria-haspopup="dialog"
@@ -149,7 +170,7 @@ export default function NavWithClockAndSettings({
                 onClick={() => setShowSettings((s) => !s)}
                 className="inline-flex items-center hover:text-white gap-2 px-3.25 py-1.75 rounded-sm hover:bg-gray-800 hover:cursor-pointer"
               >
-                <IconSettings className="" size={18} />
+                <IconSettings size={18} />
                 <span className="sr-only">Ajustes</span>
               </button>
             </div>
@@ -184,7 +205,7 @@ export default function NavWithClockAndSettings({
               aria-label="Barra de la ventana de ajustes (arrastrable)"
             >
               <div className="flex items-center gap-2">
-                <IconSettings className="" size={16} />
+                <IconSettings size={16} />
                 <span className="ml-2 text-sm text-gray-700 dark:text-gray-200 select-none">
                   Settings
                 </span>
@@ -229,11 +250,12 @@ export default function NavWithClockAndSettings({
                   </label>
                   <select
                     disabled
-                    value={locale}
-                    onChange={(e) => setLocale(e.target.value)}
+                    value={theme}
+                    onChange={(e) => setTheme(e.target.value)}
                     className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
-                    <option selected>Default</option>
+                    <option value="default">Default</option>
+                    {/* añade otras opciones si quieres */}
                   </select>
                 </div>
 

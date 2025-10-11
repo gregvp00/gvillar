@@ -13,6 +13,7 @@ export default function AppPreview() {
           src="/appPreview.webp"
           alt="App Preview"
           fill
+          sizes="(max-width: 768px) 80vw, 450px"
           priority
           className="z-0 pointer-events-none object-cover"
         />
