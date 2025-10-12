@@ -1,34 +1,38 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { codeToHtml } from 'shiki';
+import { codeToHtml } from "shiki";
 
 export default function CodeEditor() {
   // --- CÓDIGO FUENTE SEPARADO ---
 
-  const [appPreviewCode] = useState(`import AppBottomDrawer from "@/components/AppBottomDrawer";
+  const [appPreviewCode] =
+    useState(`import AppBottomDrawer from "@/components/AppBottomDrawer";
 import AppNav from "@/components/AppNav";
 import Image from "next/image";
 
 export default function AppPreview() {
   return (
     <div className="w-full flex justify-center">
-      <main className="relative w-full h-[700px] bg-black overflow-hidden">
+      <main
+        className="relative w-full h-[70vh] bg-black overflow-hidden"
+        style={{ position: "relative" }}
+      >
         <Image
-          src="/appPreview.svg"
+          src="/appPreview.webp"
           alt="App Preview"
-          layout="fill"
-          objectFit="cover"
-          className="z-0 pointer-events-none"
+          fill
+          sizes="(max-width: 768px) 80vw, 450px"
+          priority
+          className="z-0 pointer-events-none object-cover"
         />
-        
-        <AppNav/>
-        
+        <AppNav />
         <AppBottomDrawer />
       </main>
     </div>
   );
-}`);
+}
+`);
 
   const [appNavCode] = useState(`"use client";
 
@@ -212,15 +216,25 @@ export default function AppBottomDrawer() {
   // --- ESTADOS PARA EL HTML RESALTADO ---
   const [highlightedAppPreview, setHighlightedAppPreview] = useState("");
   const [highlightedAppNav, setHighlightedAppNav] = useState("");
-  const [highlightedAppBottomDrawer, setHighlightedAppBottomDrawer] = useState("");
+  const [highlightedAppBottomDrawer, setHighlightedAppBottomDrawer] =
+    useState("");
 
   useEffect(() => {
     const highlightAll = async () => {
       try {
         // Resalta cada bloque de código
-        const htmlPreview = await codeToHtml(appPreviewCode, { lang: 'tsx', theme: 'vitesse-dark' });
-        const htmlNav = await codeToHtml(appNavCode, { lang: 'tsx', theme: 'vitesse-dark' });
-        const htmlDrawer = await codeToHtml(appBottomDrawerCode, { lang: 'tsx', theme: 'vitesse-dark' });
+        const htmlPreview = await codeToHtml(appPreviewCode, {
+          lang: "tsx",
+          theme: "vitesse-dark",
+        });
+        const htmlNav = await codeToHtml(appNavCode, {
+          lang: "tsx",
+          theme: "vitesse-dark",
+        });
+        const htmlDrawer = await codeToHtml(appBottomDrawerCode, {
+          lang: "tsx",
+          theme: "vitesse-dark",
+        });
 
         // Actualiza los estados correspondientes
         setHighlightedAppPreview(htmlPreview);
@@ -236,7 +250,6 @@ export default function AppBottomDrawer() {
 
   return (
     <div className="text-left text-sm [&_pre]:whitespace-pre-wrap [&_pre]:break-words h-[70vh] overflow-y-auto rounded-lg border border-gray-700">
-      
       {/* Bloque para AppPreview.tsx */}
       <div>
         <div className="sticky top-0 px-4 py-2 bg-gray-800 text-gray-300 font-mono z-10">
@@ -269,7 +282,6 @@ export default function AppBottomDrawer() {
           dangerouslySetInnerHTML={{ __html: highlightedAppBottomDrawer }}
         />
       </div>
-
     </div>
   );
 }

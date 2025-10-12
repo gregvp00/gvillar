@@ -8,11 +8,12 @@ import AppPreview from "@/components/AppPreview";
 import CodeEditor from "@/components/CodeEditor";
 import AppTabs from "@/components/AppTabs";
 import { projects } from "@/data/pageData";
-import { IconCode, IconUserCheck } from "@tabler/icons-react";
+import { IconCode, IconUserCheck, IconPhoneRinging } from "@tabler/icons-react";
 import Carousel from "@/components/Carousel";
 import Link from "next/link";
 import AnimatedBlobBackground from "@/components/AnimatedBlobBackground";
 import ContactForm from "@/components/Form";
+import FluidBackground from "@/components/FluidBackground";
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
@@ -123,7 +124,7 @@ export default function Home() {
   const myTabs = [
     {
       id: "app",
-      label: "App Preview",
+      label: "Demo Preview",
       content: <AppPreview />,
     },
     {
@@ -140,11 +141,11 @@ export default function Home() {
         <div className="flex items-center w-full border-b border-solid border-gray-800 dark:border-gray-400">
           <section className="grid grid-cols-1 xl:grid-cols-2 grid-rows-1 gap-7 justify-between items-center w-full my-14">
             <div className="space-y-4 mb-12">
-              <h1 className="text-6xl lg:text-7xl max-w-md lg:max-w-lg font-[Oooh_Baby] text-center lg:text-left mx-auto text-[#adccc2]">
+              <h1 className="text-6xl lg:text-7xl max-w-md lg:max-w-lg font-[Oooh_Baby] text-center lg:text-center mx-auto text-[#adccc2]">
                 Gregory Villar P.
               </h1>
               <h3
-                className="text-md lg:text-lg max-w-sm lg:max-w-lg text-center lg:text-left mx-auto bg-clip-text text-transparent"
+                className="text-md lg:text-lg max-w-sm lg:max-w-lg text-center lg:text-center mx-auto bg-clip-text text-transparent"
                 style={{
                   backgroundImage:
                     "radial-gradient(59.95% 118.21% at 50% 19.91%, #adccc2 0px, #adccc2 0%, #b3b3b3 50%)",
@@ -153,6 +154,17 @@ export default function Home() {
                 Creative and enthusiastic web developer & designer with a focus
                 on practical interfaces and web tools.
               </h3>
+              <Link
+                href="#contact"
+                className="flex w-56 mx-auto items-center cursor-pointer [text-shadow:2px_2px_3px_rgba(0,0,0,0.4)] bg-[#d8cfc0] hover:bg-[#e6ddce] rounded-lg p-2 text-md py-2 px-4 text-gray-800 hover:shadow-[0_1px_3px_1px_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] transition-all duration-50 border-1 shadow-white/70"
+              >
+                <IconPhoneRinging
+                  className="mr-4 text-gray-700"
+                  size={30}
+                  stroke={1.5}
+                />
+                Let's get in touch
+              </Link>
             </div>
             <div className="flex justify-center">
               <div className="w-full left-0 md:max-w-md shadow-2xl bg-gray-800 border border-[#525f6f] rounded-t-lg">
@@ -268,7 +280,7 @@ export default function Home() {
           <Carousel />
 
           <h1 className="text-5xl font-medium inline-flex bg-clip-text bg-[linear-gradient(91deg,#474747_0%,#d0d0d0_55%,#474747_100%)] text-transparent">
-            <IconUserCheck
+            <IconPhoneRinging
               className=" mr-4 text-[#d0d0d0]"
               size={50}
               stroke={1.5}
@@ -313,6 +325,25 @@ export default function Home() {
                 Schedule a meeting
               </Link>
             </div>
+          </div>
+          <div className="fixed -z-10 top-0 left-0 w-screen h-screen opacity-15">
+            <FluidBackground
+              colors={["#5227FF", "#FF9FFC", "#B19EEF"]}
+              mouseForce={20}
+              cursorSize={100}
+              isViscous={false}
+              viscous={30}
+              iterationsViscous={32}
+              iterationsPoisson={32}
+              resolution={0.2}
+              isBounce={true}
+              autoDemo={true}
+              autoSpeed={0.2}
+              autoIntensity={2.2}
+              takeoverDuration={0.25}
+              autoResumeDelay={3000}
+              autoRampDuration={0.6}
+            />
           </div>
         </main>
         <footer className="grid grid-cols-2 w-full">

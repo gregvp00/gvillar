@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Gregory Villar",
@@ -14,6 +15,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <Script
+          defer
+          src="https://umami-cg66.onrender.com/script.js"
+          data-website-id="2f6af164-25ba-4b60-8227-6484abca1781"
+        ></Script>
         <link
           href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Oooh+Baby&display=swap"
           rel="stylesheet"
