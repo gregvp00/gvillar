@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { baseKeywords } from "@/data/keywords";
 
 export const metadata: Metadata = {
   title: {
@@ -8,25 +9,7 @@ export const metadata: Metadata = {
   },
   description:
     "Gregory Villar — creative web developer & designer based in Valencia, Spain. I build practical interfaces and web tools using Next.js, Astro, Tailwind, Docker, and Nextcloud. Available for web development, troubleshooting, and consulting.",
-  keywords: [
-    "Gregory Villar",
-    "Greg Villar IT & Consulting",
-    "web developer",
-    "web designer",
-    "Valencia",
-    "Next.js",
-    "Astro",
-    "Tailwind",
-    "Docker",
-    "Nextcloud",
-    "portfolio",
-    "parallax",
-    "device orientation",
-    "ecommerce",
-    "Shopify",
-    "Fincas Barahona",
-    "Pau Portfolio",
-  ],
+  keywords: [...baseKeywords],
   authors: [{ name: "Gregory Villar P.", url: "https://www.gregvillar.com" }],
   openGraph: {
     title: "Gregory Villar P. — Web Developer & Designer",
