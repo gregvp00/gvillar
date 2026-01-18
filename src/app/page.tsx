@@ -10,6 +10,10 @@ import AppTabs from "@/components/AppTabs";
 import { projects } from "@/data/pageData";
 import { IconCode, IconUserCheck, IconPhoneRinging } from "@tabler/icons-react";
 import Carousel from "@/components/Carousel";
+import dynamic from "next/dynamic";
+const DynamicCarousel = dynamic(() => import("@/components/Carousel"), {
+  loading: () => <p>Loading...</p>,
+});
 import Link from "next/link";
 import AnimatedBlobBackground from "@/components/AnimatedBlobBackground";
 import ContactForm from "@/components/Form";
@@ -277,7 +281,7 @@ export default function Home() {
               impactful developer.
             </p>
           </div>
-          <Carousel />
+          <DynamicCarousel />
 
           <h1 className="text-5xl font-medium inline-flex bg-clip-text bg-[linear-gradient(91deg,#474747_0%,#d0d0d0_55%,#474747_100%)] text-transparent">
             <IconPhoneRinging
