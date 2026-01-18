@@ -138,6 +138,9 @@ export default function FluidBackground({
           antialias: true,
           alpha: true,
         });
+        // Explicitly enable EXT_float_blend for maximal portability
+        this.renderer.getContext().getExtension("EXT_float_blend");
+
         // Always transparent
         this.renderer.autoClear = false;
         this.renderer.setClearColor(new THREE.Color(0x000000), 0);
