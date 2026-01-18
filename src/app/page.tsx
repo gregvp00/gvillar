@@ -10,6 +10,8 @@ import AppTabs from "@/components/AppTabs";
 import { projects } from "@/data/pageData";
 import { IconCode, IconUserCheck, IconPhoneRinging } from "@tabler/icons-react";
 import Carousel from "@/components/Carousel";
+import { useTranslation } from "react-i18next";
+import "@/i18n/config";
 import dynamic from "next/dynamic";
 const DynamicCarousel = dynamic(() => import("@/components/Carousel"), {
   loading: () => <p>Loading...</p>,
@@ -20,6 +22,7 @@ import ContactForm from "@/components/Form";
 import FluidBackground from "@/components/FluidBackground";
 
 export default function Home() {
+  const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -28,11 +31,6 @@ export default function Home() {
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
-
-  const explicitTheme = {
-    light: ["#ffffff", "#a8f0be", "#51e17c", "#1eae49", "#116329"],
-    dark: ["#000000", "#103d15", "#1f7a2a", "#2fb63f", "#56d364"],
-  };
 
   const animatedRefs = useRef<Map<string, Element | null>>(new Map());
 
@@ -128,12 +126,12 @@ export default function Home() {
   const myTabs = [
     {
       id: "app",
-      label: "Demo Preview",
+      label: t('TABS.DEMO_PREVIEW'),
       content: <AppPreview />,
     },
     {
       id: "code",
-      label: "Code",
+      label: t('TABS.CODE'),
       content: <CodeTabPage />,
     },
   ];
@@ -146,7 +144,7 @@ export default function Home() {
           <section className="grid grid-cols-1 xl:grid-cols-2 grid-rows-1 gap-7 justify-between items-center w-full my-14">
             <div className="space-y-4 mb-12">
               <h1 className="text-6xl lg:text-7xl max-w-md lg:max-w-lg font-[Oooh_Baby] text-center lg:text-center mx-auto text-[#adccc2]">
-                Gregory Villar P.
+                {t('INDEX.HERO_NAME')}
               </h1>
               <h3
                 className="text-md lg:text-lg max-w-sm lg:max-w-lg text-center lg:text-center mx-auto bg-clip-text text-transparent"
@@ -155,8 +153,7 @@ export default function Home() {
                     "radial-gradient(59.95% 118.21% at 50% 19.91%, #adccc2 0px, #adccc2 0%, #b3b3b3 50%)",
                 }}
               >
-                Creative and enthusiastic web developer & designer with a focus
-                on practical interfaces and web tools.
+                {t('INDEX.HERO_DESCRIPTION')}
               </h3>
               <Link
                 href="#contact"
@@ -167,7 +164,7 @@ export default function Home() {
                   size={30}
                   stroke={1.5}
                 />
-                Let's get in touch
+                {t('INDEX.HERO_CTA')}
               </Link>
             </div>
             <div className="flex justify-center">
@@ -184,7 +181,7 @@ export default function Home() {
             className="text-5xl font-medium inline-flex bg-clip-text bg-[linear-gradient(91deg,#474747_0%,#d0d0d0_55%,#474747_100%)] text-transparent"
           >
             <IconCode className="mr-4 text-[#d0d0d0]" size={50} stroke={1.5} />
-            Projects
+            {t('INDEX.PROJECTS_TITLE')}
           </h1>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mx-8 lg:mx-20">
             {projects.map((data) => (
@@ -221,7 +218,9 @@ export default function Home() {
                       <h3 className="mt-0.5 text-xl font-medium">
                         {data.title}
                       </h3>
-                      <h4 className="mt-0.5 text-sm ">{data.description}</h4>
+                      <h4 className="mt-0.5 text-sm ">
+                        {t(`PROJECTS.${data.title.toUpperCase().replace(/\s|\./g, "_")}`)}
+                      </h4>
                     </a>
                   </div>
                   <div className="gap-4 lg:gap-8 mt-4 flex flex-none justify-between">
@@ -265,21 +264,12 @@ export default function Home() {
               size={50}
               stroke={1.5}
             />
-            About me
+            {t('INDEX.ABOUT_TITLE')}
           </h1>
           <div className="flex flex-col gap-2 text-md max-w-2xl">
-            <p>My name is Gregory, and I'm a 24-year-old working student.</p>
-            <p>
-              My passion for technology began at a young age, It has been fueled
-              by a continuous desire to learn through creation, making servers,
-              building computers and developing practical ideas. Each project
-              serves as an opportunity to learn and refine my skills.
-            </p>
-            <p>
-              Currently, my goal is to enter into the IT industry and deepen my
-              expertise in a specialized area to become a more proficient and
-              impactful developer.
-            </p>
+            <p>{t('INDEX.ABOUT_DESCRIPTION')}</p>
+            <p>{t('INDEX.ABOUT_DESCRIPTION2')}</p>
+            <p>{t('INDEX.ABOUT_DESCRIPTION3')}</p>
           </div>
           <DynamicCarousel />
 
@@ -289,7 +279,7 @@ export default function Home() {
               size={50}
               stroke={1.5}
             />
-            Let's get in touch
+            {t('INDEX.CONTACT_TITLE')}
           </h1>
           <div
             id="contact"
@@ -312,7 +302,7 @@ export default function Home() {
                 href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:ad63d264-d78b-432d-ac1f-ebe272684569"
                 className="relative [text-shadow:2px_2px_4px_rgba(0,0,0,1)] bg-black/80 rounded-lg p-2 text-xl py-2 px-4 text-white hover:-translate-y-1 transition-transform duration-200 shadow-lg shadow-black/70"
               >
-                Download my resume
+                {t('INDEX.CONTACT_RESUME')}
               </Link>
               <button
                 id="email-link"
@@ -320,13 +310,13 @@ export default function Home() {
                 data-dominio="gregvillar.com"
                 className="relative cursor-pointer [text-shadow:2px_2px_4px_rgba(0,0,0,1)] bg-red-700/80 rounded-lg p-2 text-xl py-2 px-4 text-white hover:-translate-y-1 transition-transform duration-200 shadow-lg shadow-black/70"
               >
-                Send me an email
+                {t('INDEX.CONTACT_EMAIL')}
               </button>
               <Link
                 href="https://calendly.com/gregvp002/30min"
                 className="relative [text-shadow:2px_2px_4px_rgba(0,0,0,1)] bg-blue-700/80 rounded-lg p-2 text-xl py-2 px-4 text-white hover:-translate-y-1 transition-transform duration-200 shadow-lg shadow-black/70"
               >
-                Schedule a meeting
+                {t('INDEX.CONTACT_MEETING')}
               </Link>
             </div>
           </div>
@@ -352,15 +342,16 @@ export default function Home() {
         </main>
         <footer className="grid grid-cols-2 w-full">
           <div className="justify-self-start text-left">
-            <h3>Location</h3>
-            <h3 className="opacity-70">Valencia, Spain</h3>
+            <h3>{t('INDEX.FOOTER_LOCATION')}</h3>
+            <h3 className="opacity-70">{t('INDEX.FOOTER_LOCATION2')}</h3>
           </div>
           <div className="justify-self-end text-right">
-            <h3>Developed by Gregory Villar</h3>
-            <h3 className="opacity-70">© 2025</h3>
+            <h3>{t('INDEX.FOOTER_CREDIT')}</h3>
+            <h3 className="opacity-70">{t('INDEX.FOOTER_YEAR')}</h3>
           </div>
         </footer>
       </div>
     </div>
   );
 }
+

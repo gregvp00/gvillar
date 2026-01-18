@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import "@/i18n/config";
 import {
   IconChevronRight,
   IconAdjustmentsHorizontal,
@@ -11,6 +13,7 @@ import {
 const DRAWER_PEEK_HEIGHT = 80;
 
 export default function AppBottomDrawer() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(true);
   const [drawerHeight, setDrawerHeight] = useState(0);
 
@@ -73,7 +76,7 @@ export default function AppBottomDrawer() {
             stroke={2}
             className="text-gray-400 hover:text-gray-200 transition-all"
           />
-          <h1 className="text-lg font-bold text-white">You're offline</h1>
+          <h1 className="text-lg font-bold text-white">{t('APP.STATUS')}</h1>
           <IconChartInfographic
             size={24}
             stroke={2}
@@ -82,10 +85,10 @@ export default function AppBottomDrawer() {
         </div>
 
         <div className="p-4 bg-red-950/50 mx-2 my-4 rounded-lg">
-          <p className="text-md font-semibold text-red-100">Required actions</p>
-          <p className="text-xs text-red-200">Go online when resolved</p>
+          <p className="text-md font-semibold text-red-100">{t('APP.WARNING_ACTION')}</p>
+          <p className="text-xs text-red-200">{t('APP.WARNING_ACTION2')}</p>
           <a className="text-sm mt-6 flex items-center justify-between text-white hover:underline">
-            <span>Select an eligible vehicle</span>
+            <span>{t('APP.ACTION_VEHICLE')}</span>
             <IconChevronRight size={20} stroke={2} />
           </a>
         </div>
@@ -93,3 +96,4 @@ export default function AppBottomDrawer() {
     </motion.div>
   );
 }
+

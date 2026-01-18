@@ -1,4 +1,8 @@
+import { useTranslation } from "react-i18next";
+import "@/i18n/config";
+
 export default function Nav() {
+  const { t } = useTranslation();
   return (
     <div
       role="alert"
@@ -6,14 +10,13 @@ export default function Nav() {
     >
       <strong className="block font-medium text-red-800">
         {" "}
-        This page is under development{" "}
+        {t('WARNING.TITLE')}{" "}
       </strong>
 
       <p className="mt-2 text-sm text-red-700">
-        Please note that this is not the final version of this page. I am
-        continuously refining and updating it to improve your experience and
-        provide the best result possible 😊
+        {t('WARNING.DESCRIPTION')}
       </p>
     </div>
   );
 }
+

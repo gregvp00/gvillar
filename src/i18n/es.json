@@ -1,35 +1,87 @@
 {
   "INDEX": {
+    "HERO_NAME": "Gregory Villar P.",
+    "HERO_DESCRIPTION": "Desarrollador y diseñador web creativo y entusiasta, enfocado en interfaces prácticas y herramientas web.",
+    "HERO_CTA": "Contáctame",
     "SEO_DESCRIPTION": "Desarrollador y diseñador web creativo y entusiasta, enfocado en interfaces prácticas y herramientas web.",
     "PROJECTS_TITLE": "Proyectos",
-    "ABOUT_TITLE": "Acerca de",
+    "ABOUT_TITLE": "Sobre mí",
     "ABOUT_DESCRIPTION": "Mi nombre es Gregory y soy un estudiante con empleo de 24 años.",
-    "ABOUT_DESCRIPTION_2": "Mi pasión por la tecnología comenzó a una edad temprana. Alimentado de un deseo continuo de aprender a través de la creación: haciendo servidores, construyendo ordenadores y desarrollando ideas prácticas. Cada proyecto me sirve como una oportunidad para aprender y perfeccionar mis habilidades.",
-    "ABOUT_DESCRIPTION_3": "Actualmente, mi objetivo es adentrarme en la industria de la informatica y profundizar mis conocimientos en un área especializada para convertirme en un desarrollador más competente y con mayor impacto.",
-    "CONTACT_TITLE": "Pongámonos en contacto",
+    "ABOUT_DESCRIPTION2": "Mi pasión por la tecnología comenzó a una edad temprana. Alimentado de un deseo continuo de aprender a través de la creación: haciendo servidores, construyendo ordenadores y desarrollando ideas prácticas. Cada proyecto me sirve como una oportunidad para aprender y perfeccionar mis habilidades.",
+    "ABOUT_DESCRIPTION3": "Actualmente, mi objetivo es adentrarme en la industria de la informática y profundizar mis conocimientos en un área especializada para convertirme en un desarrollador más competente y con mayor impacto.",
+    "CONTACT_TITLE": "Contáctame",
     "CONTACT_RESUME": "Descarga mi currículum",
     "CONTACT_EMAIL": "Envíame un email",
     "CONTACT_MEETING": "Reserva una reunión",
     "FOOTER_LOCATION": "Ubicación",
-    "FOOTER_LOCATION_2": "Valencia, España",
-    "FOOTER_CREDIT": "Desarrollado por Gregory Villar"
+    "FOOTER_LOCATION2": "Valencia, España",
+    "FOOTER_CREDIT": "Desarrollado por Gregory Villar",
+    "FOOTER_YEAR": "© 2025"
   },
   "NAV": {
-    "PROJECTS": "PROJECTOS",
-    "ABOUT_ME": "ACERCA DE",
+    "PROJECTS": "PROYECTOS",
+    "ABOUT_ME": "SOBRE MÍ",
     "CONTACT": "CONTACTO",
-    "CV": "CV"
+    "CV": "CV",
+    "HOME": "Inicio",
+    "SETTINGS": "Ajustes",
+    "SETTINGS_ARIA": "Ajustes",
+    "LABEL_LANGUAGE": "Idioma",
+    "LABEL_TIMEZONE": "Zona horaria detectada",
+    "LABEL_THEME": "Tema",
+    "THEME_DEFAULT": "Predeterminado",
+    "BTN_CLOSE": "Cerrar",
+    "LANG_EN": "Inglés",
+    "LANG_ES": "Español",
+    "LANG_DE": "Alemán"
   },
   "PROJECTS": {
     "FINCAS_BARAHONA": "Alquiler de alojamientos turísticos en la ciudad costera de Altea con gestión de archivos y recibos usando Nextcloud.",
     "DEVICE_ORIENTATION": "Una página web sin framework que demuestra efectos de paralaje usando la orientación del dispositivo y las interacciones del ratón (hover).",
     "PAU_PORTFOLIO": "Una página web de portafolio personal, mostrando su trabajo y habilidades.",
-    "ECOMMERCE_ASTRO": "Una página web de comercio electrónico en progreso usando Astro y la API de Shopify."
+    "ECOMMERCE_ON_ASTRO": "Es una página web de comercio electrónico en progreso usando Astro y la API de Shopify."
+  },
+  "FORM": {
+    "LABEL_NAME": "Nombre",
+    "LABEL_EMAIL": "Correo electrónico",
+    "LABEL_INTEREST": "Interés",
+    "LABEL_MESSAGE": "Mensaje",
+    "LABEL_CAPTCHA": "Captcha",
+    "INTEREST_WEBDEV": "Desarrollo de sitios web",
+    "INTEREST_DIAGNOSIS": "Diagnóstico/solución de problemas (hardware y software)",
+    "INTEREST_CONNECT": "Conectar",
+    "INTEREST_OTHER": "Otros/Necesito asesoramiento",
+    "BTN_SEND": "Enviar",
+    "BTN_SENDING": "Enviando...",
+    "SUCCESS_MSG": "¡Mensaje enviado con éxito!",
+    "ERR_NAME_MIN": "El nombre debe tener al menos 2 caracteres",
+    "ERR_EMAIL_INVALID": "Debe ser una dirección de correo válida",
+    "ERR_MESSAGE_MIN": "El mensaje debe tener al menos 5 caracteres",
+    "ERR_CAPTCHA_REQUIRED": "El captcha es obligatorio",
+    "ERR_NETWORK": "La respuesta de la red no fue correcta",
+    "ERR_SENDING": "Hubo un problema al enviar su mensaje."
   },
   "APP": {
     "STATUS": "Estás desconectado",
     "WARNING_ACTION": "Acciones requeridas",
-    "WARNING_ACTION_2": "Volver en línea al resolverse",
-    "ACTION_VEHICLE": "Seleciona un vehiculo disponible"
+    "WARNING_ACTION2": "Volver en línea al resolverse",
+    "ACTION_VEHICLE": "Selecciona un vehículo elegible",
+    "NAV_INBOX": "Bandeja de entrada",
+    "NAV_EARNINGS": "Ingresos",
+    "NAV_WALLET": "Billetera",
+    "NAV_ACCOUNT": "Cuenta",
+    "NAV_OPEN_MENU": "Abrir menú",
+    "NAV_AVATAR_ALT": "Avatar de usuario"
+  },
+  "COMMON": {
+    "LOADING": "Cargando..."
+  },
+  "TABS": {
+    "DEMO_PREVIEW": "Vista Previa",
+    "CODE": "Código"
+  },
+  "WARNING": {
+    "TITLE": "Esta página está en desarrollo",
+    "DESCRIPTION": "Ten en cuenta que esta no es la versión final de esta página. Estoy refinándola y actualizándola continuamente para mejorar tu experiencia y proporcionar el mejor resultado posible 😊"
   }
 }

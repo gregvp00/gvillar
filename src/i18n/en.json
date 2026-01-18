@@ -1,35 +1,87 @@
 {
   "INDEX": {
-    "SEO_DESCRIPTION": "Desarrollador y diseñador web creativo y entusiasta, enfocado en interfaces prácticas y herramientas web.",
-    "PROJECTS_TITLE": "Proyectos",
-    "ABOUT_TITLE": "Acerca de",
-    "ABOUT_DESCRIPTION": "Mi nombre es Gregory y soy un estudiante con empleo de 24 años.",
-    "ABOUT_DESCRIPTION_2": "Mi pasión por la tecnología comenzó a una edad temprana. Alimentado de un deseo continuo de aprender a través de la creación: haciendo servidores, construyendo ordenadores y desarrollando ideas prácticas. Cada proyecto me sirve como una oportunidad para aprender y perfeccionar mis habilidades.",
-    "ABOUT_DESCRIPTION_3": "Actualmente, mi objetivo es adentrarme en la industria de la informatica y profundizar mis conocimientos en un área especializada para convertirme en un desarrollador más competente y con mayor impacto.",
-    "CONTACT_TITLE": "Pongámonos en contacto",
-    "CONTACT_RESUME": "Descarga mi currículum",
-    "CONTACT_EMAIL": "Envíame un email",
-    "CONTACT_MEETING": "Reserva una reunión",
-    "FOOTER_LOCATION": "Ubicación",
-    "FOOTER_LOCATION_2": "Valencia, España",
-    "FOOTER_CREDIT": "Desarrollado por Gregory Villar"
+    "HERO_NAME": "Gregory Villar P.",
+    "HERO_DESCRIPTION": "Creative and enthusiastic web developer & designer with a focus on practical interfaces and web tools.",
+    "HERO_CTA": "Let's get in touch",
+    "SEO_DESCRIPTION": "Creative and enthusiastic web developer and designer, focused on practical interfaces and web tools.",
+    "PROJECTS_TITLE": "Projects",
+    "ABOUT_TITLE": "About me",
+    "ABOUT_DESCRIPTION": "My name is Gregory, and I'm a 24-year-old working student.",
+    "ABOUT_DESCRIPTION2": "My passion for technology began at a young age, It has been fueled by a continuous desire to learn through creation, making servers, building computers and developing practical ideas. Each project serves as an opportunity to learn and refine my skills.",
+    "ABOUT_DESCRIPTION3": "Currently, my goal is to enter into the IT industry and deepen my expertise in a specialized area to become a more proficient and impactful developer.",
+    "CONTACT_TITLE": "Let's get in touch",
+    "CONTACT_RESUME": "Download my resume",
+    "CONTACT_EMAIL": "Send me an email",
+    "CONTACT_MEETING": "Schedule a meeting",
+    "FOOTER_LOCATION": "Location",
+    "FOOTER_LOCATION2": "Valencia, Spain",
+    "FOOTER_CREDIT": "Developed by Gregory Villar",
+    "FOOTER_YEAR": "© 2025"
   },
   "NAV": {
-    "PROJECTS": "PROJECTOS",
-    "ABOUT_ME": "ACERCA DE",
-    "CONTACT": "CONTACTO",
-    "CV": "CV"
+    "PROJECTS": "PROJECTS",
+    "ABOUT_ME": "ABOUT ME",
+    "CONTACT": "CONTACT",
+    "CV": "CV",
+    "HOME": "Home",
+    "SETTINGS": "Settings",
+    "SETTINGS_ARIA": "Settings",
+    "LABEL_LANGUAGE": "Language",
+    "LABEL_TIMEZONE": "Detected time zone",
+    "LABEL_THEME": "Theme",
+    "THEME_DEFAULT": "Default",
+    "BTN_CLOSE": "Close",
+    "LANG_EN": "English",
+    "LANG_ES": "Spanish",
+    "LANG_DE": "German"
   },
   "PROJECTS": {
-    "FINCAS_BARAHONA": "Alquiler de alojamientos turísticos en la ciudad costera de Altea con gestión de archivos y recibos usando Nextcloud.",
-    "DEVICE_ORIENTATION": "Una página web sin framework que demuestra efectos de paralaje usando la orientación del dispositivo y las interacciones del ratón (hover).",
-    "PAU_PORTFOLIO": "Una página web de portafolio personal, mostrando su trabajo y habilidades.",
-    "ECOMMERCE_ASTRO": "Una página web de comercio electrónico en progreso usando Astro y la API de Shopify."
+    "FINCAS_BARAHONA": "Rental of tourist accommodations in the seaside city of Altea with file and receipt management using Nextcloud.",
+    "DEVICE_ORIENTATION": "A webpage without framework demonstrating parallax effects using Device Orientation and mouse hover interactions.",
+    "PAU_PORTFOLIO": "A personal portfolio webpage, showcasing her work and skills.",
+    "ECOMMERCE_ON_ASTRO": "Is a work in progress ecommerce webpage using Astro and Shopify API."
+  },
+  "FORM": {
+    "LABEL_NAME": "Name",
+    "LABEL_EMAIL": "Email",
+    "LABEL_INTEREST": "Interest",
+    "LABEL_MESSAGE": "Message",
+    "LABEL_CAPTCHA": "Captcha",
+    "INTEREST_WEBDEV": "Website development",
+    "INTEREST_DIAGNOSIS": "Diagnosis/troubleshooting (hardware & software)",
+    "INTEREST_CONNECT": "Connect",
+    "INTEREST_OTHER": "Other/I need advice",
+    "BTN_SEND": "Send",
+    "BTN_SENDING": "Sending...",
+    "SUCCESS_MSG": "Message sent successfully!",
+    "ERR_NAME_MIN": "Name must be at least 2 characters",
+    "ERR_EMAIL_INVALID": "Must be a valid email address",
+    "ERR_MESSAGE_MIN": "Message must be at least 5 characters",
+    "ERR_CAPTCHA_REQUIRED": "Captcha is required",
+    "ERR_NETWORK": "Network response was not ok",
+    "ERR_SENDING": "There was a problem sending your message."
   },
   "APP": {
-    "STATUS": "Estás desconectado",
-    "WARNING_ACTION": "Acciones requeridas",
-    "WARNING_ACTION_2": "Volver en línea al resolverse",
-    "ACTION_VEHICLE": "Seleciona un vehiculo disponible"
+    "STATUS": "You are offline",
+    "WARNING_ACTION": "Required actions",
+    "WARNING_ACTION2": "Go online when resolved",
+    "ACTION_VEHICLE": "Select an eligible vehicle",
+    "NAV_INBOX": "Inbox",
+    "NAV_EARNINGS": "Earnings",
+    "NAV_WALLET": "Wallet",
+    "NAV_ACCOUNT": "Account",
+    "NAV_OPEN_MENU": "Open menu",
+    "NAV_AVATAR_ALT": "User avatar"
+  },
+  "COMMON": {
+    "LOADING": "Loading..."
+  },
+  "TABS": {
+    "DEMO_PREVIEW": "Demo Preview",
+    "CODE": "Code"
+  },
+  "WARNING": {
+    "TITLE": "This page is under development",
+    "DESCRIPTION": "Please note that this is not the final version of this page. I am continuously refining and updating it to improve your experience and provide the best result possible 😊"
   }
 }

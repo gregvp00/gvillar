@@ -5,8 +5,11 @@ import { Home, Briefcase, User, Mail } from "lucide-react";
 import { IconBrandGithub } from "@tabler/icons-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import "@/i18n/config";
 
 export default function MobileNav() {
+  const { t } = useTranslation();
   const pathname = usePathname();
   const [active, setActive] = useState<string>(pathname ?? "/");
 
@@ -15,10 +18,10 @@ export default function MobileNav() {
   }, [pathname]);
 
   const items = [
-    { id: "home", href: "/", label: "Home", icon: Home },
-    { id: "projects", href: "#projects", label: "Projects", icon: Briefcase },
-    { id: "about", href: "#about", label: "About", icon: User },
-    { id: "contact", href: "#contact", label: "Contact", icon: Mail },
+    { id: "home", href: "/", label: t("NAV.HOME"), icon: Home },
+    { id: "projects", href: "#projects", label: t("NAV.PROJECTS"), icon: Briefcase },
+    { id: "about", href: "#about", label: t("NAV.ABOUT_ME"), icon: User },
+    { id: "contact", href: "#contact", label: t("NAV.CONTACT"), icon: Mail },
     {
       id: "github",
       href: "https://github.com/gregvp00",
@@ -57,3 +60,4 @@ export default function MobileNav() {
     </nav>
   );
 }
+

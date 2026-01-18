@@ -36,32 +36,27 @@ export default function AppPreview() {
 
   const [appNavCode] = useState(`"use client";
 
-import { IconMenu2, IconX, IconInbox, IconSettings, IconWallet, IconCash, IconStarFilled } from "@tabler/icons-react";
+import { IconMenu2, IconInbox, IconSettings, IconWallet, IconCash, IconStarFilled } from "@tabler/icons-react";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import "@/i18n/config";
 
 const MENU_WIDTH = 256;
 
 export default function AppNav() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleDragEnd = (event: any, info: any) => {
-    if (info.offset.x < -MENU_WIDTH / 2) {
-      setIsOpen(false);
-    } else {
-      setIsOpen(true);
-    }
-  };
-
   const navItems = [
-    { name: "Inbox", icon: <IconInbox size={20} /> },
-    { name: "Earnings", icon: <IconCash size={20} /> },
-    { name: "Wallet", icon: <IconWallet size={20} /> },
-    { name: "Account", icon: <IconSettings size={20} /> },
+    { name: t("APP.NAV_INBOX"), icon: <IconInbox size={20} /> },
+    { name: t("APP.NAV_EARNINGS"), icon: <IconCash size={20} /> },
+    { name: t("APP.NAV_WALLET"), icon: <IconWallet size={20} /> },
+    { name: t("APP.NAV_ACCOUNT"), icon: <IconSettings size={20} /> },
   ];
 
   return (
@@ -70,7 +65,7 @@ export default function AppNav() {
         <button
           onClick={toggleMenu}
           className="p-2 rounded-full bg-gray-900/70 text-white backdrop-blur-sm hover:bg-gray-800/70 transition-colors"
-          aria-label="Abrir menú"
+          aria-label={t("APP.NAV_OPEN_MENU")}
         >
           <IconMenu2 size={24} />
         </button>
@@ -89,10 +84,7 @@ export default function AppNav() {
             transition={{ type: "spring", stiffness: 400, damping: 40 }}
             className="absolute inset-0 z-40 cursor-grab active:cursor-grabbing"
           >
-            <div
-              onClick={toggleMenu}
-              className="absolute inset-0"
-            />
+            <div onClick={toggleMenu} className="absolute inset-0" />
 
             <div
               className="absolute top-0 left-0 h-full w-64 bg-gray-800 text-white py-6 px-4 z-50 shadow-2xl"
@@ -102,12 +94,15 @@ export default function AppNav() {
                 <div className="flex items-center gap-3">
                   <img
                     src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-                    alt="Avatar de usuario"
+                    alt={t("APP.NAV_AVATAR_ALT")}
                     className="w-8 h-8 rounded-full border border-white object-cover"
                   />
                   <div className="flex flex-col">
                     <span className="font-bold text-sm text-white">Lorem Ipsum</span>
-                    <span className="text-xs text-gray-400 inline-flex items-center gap-0.5"><IconStarFilled size={10} />4.99</span>
+                    <span className="text-xs text-gray-400 inline-flex items-center gap-0.5">
+                      <IconStarFilled size={10} />
+                      4.99
+                    </span>
                   </div>
                 </div>
               </div>
@@ -133,11 +128,14 @@ export default function AppNav() {
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import "@/i18n/config";
 import { IconChevronRight, IconAdjustmentsHorizontal, IconChartInfographic } from "@tabler/icons-react";
 
 const DRAWER_PEEK_HEIGHT = 80;
 
 export default function AppBottomDrawer() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(true);
   const [drawerHeight, setDrawerHeight] = useState(0);
 
@@ -159,23 +157,6 @@ export default function AppBottomDrawer() {
     }
   };
 
-  const handleDragEnd = (event: any, info: any) => {
-    const dragThreshold = 50;
-    if (info.offset.y < -dragThreshold) {
-      toggleDrawer(true);
-    } else if (info.offset.y > dragThreshold) {
-      toggleDrawer(false);
-    } else {
-      toggleDrawer(isOpen);
-    }
-  };
-
-  useEffect(() => {
-    if (drawerHeight > 0) {
-      toggleDrawer(isOpen);
-    }
-  }, [drawerHeight, isOpen]);
-
   return (
     <motion.div
       ref={drawerRef}
@@ -196,15 +177,15 @@ export default function AppBottomDrawer() {
       <div className="overflow-y-auto h-full flex flex-col">
         <div className="flex w-full justify-between items-center px-4 py-2">
           <IconAdjustmentsHorizontal size={24} stroke={2} className="text-gray-400 hover:text-gray-200 transition-all" />
-          <h1 className="text-lg font-bold text-white">You're offline</h1>
+          <h1 className="text-lg font-bold text-white">{t('APP.STATUS')}</h1>
           <IconChartInfographic size={24} stroke={2} className="text-gray-400 hover:text-gray-200 transition-all" />
         </div>
         
         <div className="p-4 bg-red-950/50 mx-2 my-4 rounded-lg">
-          <p className="text-md font-semibold text-red-100">Required actions</p>
-          <p className="text-xs text-red-200">Go online when resolved</p>
+          <p className="text-md font-semibold text-red-100">{t('APP.WARNING_ACTION')}</p>
+          <p className="text-xs text-red-200">{t('APP.WARNING_ACTION2')}</p>
           <a className="text-sm mt-6 flex items-center justify-between text-white hover:underline">
-            <span>Select an eligible vehicle</span>
+            <span>{t('APP.ACTION_VEHICLE')}</span>
             <IconChevronRight size={20} stroke={2} />
           </a>
         </div>

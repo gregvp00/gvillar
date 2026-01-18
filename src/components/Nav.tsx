@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { Languages } from "lucide-react";
 import { IconPaint, IconTimezone } from "@tabler/icons-react";
 import { navLeft } from "@/data/navData";
+import { useTranslation } from "react-i18next";
+import "@/i18n/config";
 import {
   IconBrandGithub,
   IconSettings,
@@ -23,16 +25,16 @@ interface Props {
 }
 
 export default function NavWithClockAndSettings({
-  initialLanguage = "en-US", // fallback neutral: no usar navigator aquí
+  initialLanguage = "en", // fallback neutral
   languages = [
-    { code: "en-US", label: "English" },
-    { code: "es-ES", label: "Español" },
-    { code: "de-DE", label: "Deutsch" },
+    { code: "en", label: "English" },
+    { code: "es", label: "Español" },
   ],
   onLanguageChange,
 }: Props) {
+  const { t, i18n } = useTranslation();
   const [now, setNow] = useState<Date>(new Date());
-  const [locale, setLocale] = useState<string>(initialLanguage);
+  const [locale, setLocale] = useState<string>(i18n.language || initialLanguage);
   const [theme, setTheme] = useState<string>("default");
   const [showSettings, setShowSettings] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -52,14 +54,23 @@ export default function NavWithClockAndSettings({
 
   // Leer la locale del navegador una vez en cliente (evita discrepancias SSR/CSR)
   useEffect(() => {
-    if (typeof navigator !== "undefined") {
-      setLocale(navigator.language || initialLanguage);
+    if (typeof navigator !== "undefined" && !i18n.language) {
+      const browserLang = navigator.language.split("-")[0];
+      if (languages.some(l => l.code === browserLang)) {
+        i18n.changeLanguage(browserLang);
+        setLocale(browserLang);
+      }
     }
-  }, [initialLanguage]);
+  }, [languages, i18n]);
 
   useEffect(() => {
     if (onLanguageChange) onLanguageChange(locale);
   }, [locale, onLanguageChange]);
+
+  const handleLanguageChange = (newLang: string) => {
+    setLocale(newLang);
+    i18n.changeLanguage(newLang);
+  };
 
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
@@ -115,7 +126,7 @@ export default function NavWithClockAndSettings({
 
   // Format date/time only when mounted (client) to keep SSR stable
   const formatted = isMounted
-    ? new Intl.DateTimeFormat(locale, {
+    ? new Intl.DateTimeFormat(i18n.language === 'en' ? 'en-US' : 'es-ES', {
         dateStyle: "full",
         timeStyle: "medium",
         timeZone,
@@ -135,7 +146,7 @@ export default function NavWithClockAndSettings({
                       href={nav.href}
                       className=" flex gap-2 px-3 py-1.5 rounded-sm hover:bg-gray-800 hover:text-white items-center"
                     >
-                      {nav.title}
+                      {t(`NAV.${nav.title.replace(" ", "_")}`)}
                     </Link>
                   </li>
                 ))}
@@ -144,14 +155,14 @@ export default function NavWithClockAndSettings({
 
             <Link href="#" className="flex-1 flex items-center justify-center">
               <div className="text-sm font-medium text-gray-700 dark:text-gray-200 select-none">
-                {formatted || "Loading..."}
+                {formatted || t('COMMON.LOADING')}
               </div>
             </Link>
 
             <div className="flex-1 flex items-center justify-end">
               <Link
                 href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:ad63d264-d78b-432d-ac1f-ebe272684569"
-                title="CV"
+                title={t('NAV.CV')}
                 className="inline-flex items-center hover:text-white gap-2 px-3.25 py-1.75 rounded-sm hover:bg-gray-800"
               >
                 <IconFileSearch size={18} />
@@ -171,7 +182,7 @@ export default function NavWithClockAndSettings({
                 className="inline-flex items-center hover:text-white gap-2 px-3.25 py-1.75 rounded-sm hover:bg-gray-800 hover:cursor-pointer"
               >
                 <IconSettings size={18} />
-                <span className="sr-only">Ajustes</span>
+                <span className="sr-only">{t('NAV.SETTINGS_ARIA')}</span>
               </button>
             </div>
           </div>
@@ -183,7 +194,7 @@ export default function NavWithClockAndSettings({
         <div
           role="dialog"
           id="settings-window"
-          aria-label="Ajustes"
+          aria-label={t('NAV.SETTINGS_ARIA')}
           className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
         >
           {/* dim background */}
@@ -207,7 +218,7 @@ export default function NavWithClockAndSettings({
               <div className="flex items-center gap-2">
                 <IconSettings size={16} />
                 <span className="ml-2 text-sm text-gray-700 dark:text-gray-200 select-none">
-                  Settings
+                  {t('NAV.SETTINGS')}
                 </span>
               </div>
             </div>
@@ -217,12 +228,11 @@ export default function NavWithClockAndSettings({
                 <div>
                   <label className="inline-flex text-sm font-medium text-gray-700 dark:text-gray-200">
                     <Languages className="mr-1" size={18} />
-                    Language
+                    {t('NAV.LABEL_LANGUAGE')}
                   </label>
                   <select
-                    disabled
                     value={locale}
-                    onChange={(e) => setLocale(e.target.value)}
+                    onChange={(e) => handleLanguageChange(e.target.value)}
                     className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     {languages.map((l) => (
@@ -236,7 +246,7 @@ export default function NavWithClockAndSettings({
                 <div>
                   <label className="inline-flex text-sm font-medium text-gray-700 dark:text-gray-200">
                     <IconTimezone className="mr-1" size={18} />
-                    Detected time zone
+                    {t('NAV.LABEL_TIMEZONE')}
                   </label>
                   <div className="mt-1 text-sm text-gray-600 dark:text-gray-300 select-all">
                     {timeZone}
@@ -246,7 +256,7 @@ export default function NavWithClockAndSettings({
                 <div>
                   <label className="inline-flex text-sm font-medium text-gray-700 dark:text-gray-200">
                     <IconPaint className="mr-1" size={18} />
-                    Theme
+                    {t('NAV.LABEL_THEME')}
                   </label>
                   <select
                     disabled
@@ -254,7 +264,7 @@ export default function NavWithClockAndSettings({
                     onChange={(e) => setTheme(e.target.value)}
                     className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
-                    <option value="default">Default</option>
+                    <option value="default">{t('NAV.THEME_DEFAULT')}</option>
                     {/* añade otras opciones si quieres */}
                   </select>
                 </div>
@@ -264,7 +274,7 @@ export default function NavWithClockAndSettings({
                     onClick={() => setShowSettings(false)}
                     className="px-3 py-1.5 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
                   >
-                    Cerrar
+                    {t('NAV.BTN_CLOSE')}
                   </button>
                 </div>
               </div>
@@ -275,3 +285,4 @@ export default function NavWithClockAndSettings({
     </>
   );
 }
+

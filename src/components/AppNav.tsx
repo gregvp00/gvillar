@@ -10,10 +10,13 @@ import {
 } from "@tabler/icons-react";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import "@/i18n/config";
 
 const MENU_WIDTH = 256;
 
 export default function AppNav() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -29,10 +32,10 @@ export default function AppNav() {
   };
 
   const navItems = [
-    { name: "Inbox", icon: <IconInbox size={20} /> },
-    { name: "Earnings", icon: <IconCash size={20} /> },
-    { name: "Wallet", icon: <IconWallet size={20} /> },
-    { name: "Account", icon: <IconSettings size={20} /> },
+    { name: t("APP.NAV_INBOX"), icon: <IconInbox size={20} /> },
+    { name: t("APP.NAV_EARNINGS"), icon: <IconCash size={20} /> },
+    { name: t("APP.NAV_WALLET"), icon: <IconWallet size={20} /> },
+    { name: t("APP.NAV_ACCOUNT"), icon: <IconSettings size={20} /> },
   ];
 
   return (
@@ -41,7 +44,7 @@ export default function AppNav() {
         <button
           onClick={toggleMenu}
           className="p-2 rounded-full bg-gray-900/70 text-white backdrop-blur-sm hover:bg-gray-800/70 transition-colors"
-          aria-label="Abrir menú"
+          aria-label={t("APP.NAV_OPEN_MENU")}
         >
           <IconMenu2 size={24} />
         </button>
@@ -70,7 +73,7 @@ export default function AppNav() {
                 <div className="flex items-center gap-3">
                   <img
                     src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-                    alt="Avatar de usuario"
+                    alt={t("APP.NAV_AVATAR_ALT")}
                     className="w-8 h-8 rounded-full border border-white object-cover"
                   />
                   <div className="flex flex-col">
@@ -101,3 +104,4 @@ export default function AppNav() {
     </>
   );
 }
+

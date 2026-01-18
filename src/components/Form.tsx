@@ -1,22 +1,32 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Turnstile } from "@marsidev/react-turnstile";
+import { useTranslation } from "react-i18next";
+import "@/i18n/config";
 
-const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Must be a valid email address"),
-  message: z.string().min(5, "Message must be at least 5 characters"),
-  interests: z.array(z.string()).optional(),
-  captcha: z.string().nonempty("Captcha is required"),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+type ContactFormData = {
+  name: string;
+  email: string;
+  message: string;
+  interests?: string[];
+  captcha: string;
+};
 
 export default function ContactForm() {
+  const { t, i18n } = useTranslation();
+
+  const contactSchema = useMemo(() => z.object({
+    name: z.string().min(2, t("FORM.ERR_NAME_MIN")),
+    email: z.string().email(t("FORM.ERR_EMAIL_INVALID")),
+    message: z.string().min(5, t("FORM.ERR_MESSAGE_MIN")),
+    interests: z.array(z.string()).optional(),
+    captcha: z.string().nonempty(t("FORM.ERR_CAPTCHA_REQUIRED")),
+  }), [t]);
+
   const {
     register,
     handleSubmit,
@@ -51,7 +61,7 @@ export default function ContactForm() {
 
       if (!res.ok) {
         // Mostrar mensaje específico del servidor si existe
-        const msg = json?.error || "Network response was not ok";
+        const msg = json?.error || t("FORM.ERR_NETWORK");
         // Si el error es del captcha, limpiar token para que el usuario vuelva a resolverlo
         if (msg.toLowerCase().includes("captcha")) {
           setValue("captcha", "", { shouldValidate: true });
@@ -62,12 +72,12 @@ export default function ContactForm() {
       }
 
       reset();
-      alert("Message sent successfully!");
+      alert(t("FORM.SUCCESS_MSG"));
     } catch (err: any) {
       console.error("Error sending form", err);
       // si ya mostramos error con setError, quizá no necesitemos alert, pero lo dejamos por feedback
       if (!errors.captcha)
-        alert(err?.message ?? "There was a problem sending your message.");
+        alert(err?.message ?? t("FORM.ERR_SENDING"));
     }
   };
 
@@ -78,7 +88,7 @@ export default function ContactForm() {
     >
       <div>
         <label className="block">
-          Name<span className="text-red-600">*</span>
+          {t('FORM.LABEL_NAME')}<span className="text-red-600">*</span>
         </label>
         <input
           type="text"
@@ -92,7 +102,7 @@ export default function ContactForm() {
 
       <div>
         <label className="block">
-          Email<span className="text-red-600">*</span>
+          {t('FORM.LABEL_EMAIL')}<span className="text-red-600">*</span>
         </label>
         <input
           type="email"
@@ -105,37 +115,37 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block">Interest</label>
+        <label className="block">{t('FORM.LABEL_INTEREST')}</label>
 
         <div>
           <label className="inline-flex items-center gap-2">
             <input type="checkbox" value="WebDev" {...register("interests")} />
-            <span>Website development</span>
+            <span>{t('FORM.INTEREST_WEBDEV')}</span>
           </label>
         </div>
         <div>
           <label className="inline-flex items-center gap-2">
             <input type="checkbox" value="Collab" {...register("interests")} />
-            <span>Diagnosis/troubleshooting (hardware & software)</span>
+            <span>{t('FORM.INTEREST_DIAGNOSIS')}</span>
           </label>
         </div>
         <div>
           <label className="inline-flex items-center gap-2">
             <input type="checkbox" value="Connect" {...register("interests")} />
-            <span>Connect</span>
+            <span>{t('FORM.INTEREST_CONNECT')}</span>
           </label>
         </div>
         <div>
           <label className="inline-flex items-center gap-2">
             <input type="checkbox" value="Other" {...register("interests")} />
-            <span>Other/I need advice</span>
+            <span>{t('FORM.INTEREST_OTHER')}</span>
           </label>
         </div>
       </div>
 
       <div>
         <label className="block">
-          Message<span className="text-red-600">*</span>
+          {t('FORM.LABEL_MESSAGE')}<span className="text-red-600">*</span>
         </label>
         <textarea
           rows={4}
@@ -152,14 +162,14 @@ export default function ContactForm() {
 
       <div>
         <label className="block">
-          Captcha<span className="text-red-600">*</span>
+          {t('FORM.LABEL_CAPTCHA')}<span className="text-red-600">*</span>
         </label>
         <Turnstile
           siteKey="0x4AAAAAAB6CmSdMYVBvNgXa"
           options={{
             action: "submit-form",
             theme: "light",
-            language: "en",
+            language: i18n.language === 'es' ? 'es' : 'en',
           }}
           onSuccess={(token: string) => {
             setValue("captcha", token, { shouldValidate: true });
@@ -181,14 +191,15 @@ export default function ContactForm() {
         disabled={isSubmitting || !captchaToken}
         className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500 disabled:opacity-50 mt-4 transition-all"
       >
-        {isSubmitting ? "Sending…" : "Send"}
+        {isSubmitting ? t('FORM.BTN_SENDING') : t('FORM.BTN_SEND')}
       </button>
 
       {isSubmitSuccessful && (
         <p className="text-sm text-green-600 mt-2">
-          Message sent successfully!
+          {t('FORM.SUCCESS_MSG')}
         </p>
       )}
     </form>
   );
 }
+
