@@ -91,13 +91,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Analytics: plain script tag (server-safe). Consider gating this behind consent. */}
-        <script
-          defer
-          src="https://umami-cg66.onrender.com/script.js"
-          data-website-id="2f6af164-25ba-4b60-8227-6484abca1781"
-        ></script>
-
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="theme-color" content="#000000" />
