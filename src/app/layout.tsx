@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { baseKeywords } from "@/data/keywords";
 
@@ -125,10 +124,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>
-        {children}
-        <SpeedInsights />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
