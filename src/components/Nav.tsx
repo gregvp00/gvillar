@@ -29,6 +29,7 @@ export default function NavWithClockAndSettings({
   languages = [
     { code: "en", label: "English" },
     { code: "es", label: "Español" },
+    { code: "de", label: "Deutsch" },
   ],
   onLanguageChange,
 }: Props) {
@@ -125,8 +126,17 @@ export default function NavWithClockAndSettings({
   }, []);
 
   // Format date/time only when mounted (client) to keep SSR stable
+  const getLocaleForIntl = (lang: string) => {
+    switch (lang) {
+      case 'en': return 'en-US';
+      case 'es': return 'es-ES';
+      case 'de': return 'de-DE';
+      default: return 'en-US';
+    }
+  };
+
   const formatted = isMounted
-    ? new Intl.DateTimeFormat(i18n.language === 'en' ? 'en-US' : 'es-ES', {
+    ? new Intl.DateTimeFormat(getLocaleForIntl(i18n.language), {
         dateStyle: "full",
         timeStyle: "medium",
         timeZone,

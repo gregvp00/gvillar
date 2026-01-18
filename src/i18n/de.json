@@ -1,0 +1,87 @@
+{
+  "INDEX": {
+    "HERO_NAME": "Gregory Villar P.",
+    "HERO_DESCRIPTION": "Kreativer und enthusiastischer Webentwickler & Designer mit Fokus auf praktische Schnittstellen und Web-Tools.",
+    "HERO_CTA": "Kontaktieren Sie mich",
+    "SEO_DESCRIPTION": "Kreativer und enthusiastischer Webentwickler und Designer, spezialisiert auf praktische Benutzeroberflächen und Web-Tools.",
+    "PROJECTS_TITLE": "Projekte",
+    "ABOUT_TITLE": "Über mich",
+    "ABOUT_DESCRIPTION": "Mein Name ist Gregory, ich bin ein 24-jähriger berufstätiger Student.",
+    "ABOUT_DESCRIPTION2": "Meine Leidenschaft für Technologie begann in jungen Jahren. Sie wurde durch den ständigen Wunsch genährt, durch Kreation zu lernen: Server aufbauen, Computer konstruieren und praktische Ideen entwickeln. Jedes Projekt bietet die Möglichkeit, meine Fähigkeiten zu erlernen und zu verfeinern.",
+    "ABOUT_DESCRIPTION3": "Derzeit ist es mein Ziel, in die IT-Branche einzusteigen und mein Fachwissen in einem spezialisierten Bereich zu vertiefen, um ein kompetenterer und wirkungsvollerer Entwickler zu werden.",
+    "CONTACT_TITLE": "Kontaktieren Sie mich",
+    "CONTACT_RESUME": "Meinen Lebenslauf herunterladen",
+    "CONTACT_EMAIL": "Schreiben Sie mir eine E-Mail",
+    "CONTACT_MEETING": "Termin vereinbaren",
+    "FOOTER_LOCATION": "Standort",
+    "FOOTER_LOCATION2": "Valencia, Spanien",
+    "FOOTER_CREDIT": "Entwickelt von Gregory Villar",
+    "FOOTER_YEAR": "© 2025"
+  },
+  "NAV": {
+    "PROJECTS": "PROJEKTE",
+    "ABOUT_ME": "ÜBER MICH",
+    "CONTACT": "KONTAKT",
+    "CV": "CV",
+    "HOME": "Startseite",
+    "SETTINGS": "Einstellungen",
+    "SETTINGS_ARIA": "Einstellungen",
+    "LABEL_LANGUAGE": "Sprache",
+    "LABEL_TIMEZONE": "Erkannte Zeitzone",
+    "LABEL_THEME": "Thema",
+    "THEME_DEFAULT": "Standard",
+    "BTN_CLOSE": "Schließen",
+    "LANG_EN": "Englisch",
+    "LANG_ES": "Spanisch",
+    "LANG_DE": "Deutsch"
+  },
+  "PROJECTS": {
+    "FINCAS_BARAHONA": "Vermietung von Ferienunterkünften in der Küstenstadt Altea mit Datei- und Belegverwaltung über Nextcloud.",
+    "DEVICE_ORIENTATION": "Eine Webseite ohne Framework, die Parallax-Effekte unter Verwendung der Geräteorientierung und Maus-Interaktionen demonstriert.",
+    "PAU_PORTFOLIO": "Eine persönliche Portfolio-Webseite, die ihre Arbeit und Fähigkeiten präsentiert.",
+    "ECOMMERCE_ON_ASTRO": "Eine in Arbeit befindliche E-Commerce-Webseite unter Verwendung von Astro und der Shopify-API."
+  },
+  "FORM": {
+    "LABEL_NAME": "Name",
+    "LABEL_EMAIL": "E-Mail",
+    "LABEL_INTEREST": "Interesse",
+    "LABEL_MESSAGE": "Nachricht",
+    "LABEL_CAPTCHA": "Captcha",
+    "INTEREST_WEBDEV": "Webseiten-Entwicklung",
+    "INTEREST_DIAGNOSIS": "Diagnose/Fehlerbehebung (Hardware & Software)",
+    "INTEREST_CONNECT": "Vernetzen",
+    "INTEREST_OTHER": "Sonstiges/Ich benötige Beratung",
+    "BTN_SEND": "Senden",
+    "BTN_SENDING": "Wird gesendet...",
+    "SUCCESS_MSG": "Nachricht erfolgreich gesendet!",
+    "ERR_NAME_MIN": "Der Name muss mindestens 2 Zeichen lang sein",
+    "ERR_EMAIL_INVALID": "Muss eine gültige E-Mail-Adresse sein",
+    "ERR_MESSAGE_MIN": "Die Nachricht muss mindestens 5 Zeichen lang sein",
+    "ERR_CAPTCHA_REQUIRED": "Captcha ist erforderlich",
+    "ERR_NETWORK": "Netzwerkantwort war nicht in Ordnung",
+    "ERR_SENDING": "Es gab ein Problem beim Senden Ihrer Nachricht."
+  },
+  "APP": {
+    "STATUS": "Sie sind offline",
+    "WARNING_ACTION": "Erforderliche Aktionen",
+    "WARNING_ACTION2": "Gehen Sie online, wenn das Problem gelöst ist",
+    "ACTION_VEHICLE": "Wählen Sie ein berechtigtes Fahrzeug aus",
+    "NAV_INBOX": "Posteingang",
+    "NAV_EARNINGS": "Einnahmen",
+    "NAV_WALLET": "Brieftasche",
+    "NAV_ACCOUNT": "Konto",
+    "NAV_OPEN_MENU": "Menü öffnen",
+    "NAV_AVATAR_ALT": "Benutzer-Avatar"
+  },
+  "COMMON": {
+    "LOADING": "Laden..."
+  },
+  "TABS": {
+    "DEMO_PREVIEW": "Demo-Vorschau",
+    "CODE": "Code"
+  },
+  "WARNING": {
+    "TITLE": "Diese Seite befindet sich in der Entwicklung",
+    "DESCRIPTION": "Bitte beachten Sie, dass dies nicht die endgültige Version dieser Seite ist. Ich verfeinere und aktualisiere sie ständig, um Ihre Erfahrung zu verbessern und das bestmögliche Ergebnis zu liefern 😊"
+  }
+}
